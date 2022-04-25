@@ -243,7 +243,7 @@
                         <div class ="form-group">
                             <select class="selection-2 select2-hidden-accessible" name="Movie_id" tabindex="-1" aria-hidden="true">
                                 @foreach($movies as $movie)
-                                    <option value="{{$movie->id}}">{{$movie->Title}}</option>
+                                    <option value="{{$movie->id}}" >{{$movie->Title}}</option>
                                 @endforeach
                             </select><span class="select2 select2-container select2-container--default select2-container--focus" dir="ltr" style="width: 80.7833px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-budget-yv-container"><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                         </div>
@@ -252,7 +252,7 @@
                         <span class="label-input100">Cinema</span>
                         <div class ="form-group">
 
-                            <select class="selection-2 select2-hidden-accessible" name="Cinema_id" tabindex="-1" aria-hidden="true">
+                            <select class="selection-2 select2-hidden-accessible" name="Cinema_id" tabindex="-1" aria-hidden="true" required>
                                 @foreach($cinemas as $cinema)
                                     <option value="{{$cinema->id}}">{{$cinema->Name}}</option>
                                 @endforeach
@@ -260,22 +260,22 @@
                         </div>
                         <div class ="form-group">
                             <label class="form-check-label" for="exampleCheck1">Show Time</label>
-                            <input type="time" name="Show_time">
+                            <input type="time" required name="Show_time">
                             <span class="focus-input100"></span>
                         </div>
                         <div class ="form-group">
                             <label class="form-check-label" for="exampleCheck1">Show Date</label>
-                            <input type="date" name="Show_date">
+                            <input type="date" name="Show_date" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div class ="form-group">
-                            <label class="form-check-label" for="exampleCheck1">Price of 1 ticket</label>
+                            <label class="form-check-label" for="exampleCheck1" required>Price of 1 ticket</label>
                             <input type="number" name="Price" min="20" max="200">
                             <!-- /.card-body -->
                         </div>
                         <div class ="form-group">
                             <label class="form-check-label" for="exampleCheck1">Number of ticket sold</label>
-                            <input type="number" name="Sold_Ticket" min="0" max="200">
+                            <input type="number" name="Sold_Ticket" min="0" max="200" required>
                             <!-- /.card-body -->
                         </div>
 

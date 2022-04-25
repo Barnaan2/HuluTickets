@@ -80,7 +80,7 @@
                                         <label for="exampleInputFile" class="col-sm-3 ">Poster</label>
                                         <div class="input-group col-sm-8">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="cover" name="Poster">
+                                                <input type="file" class="custom-file-input" id="cover" name="Poster" required>
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="mtitle" class="col-sm-3">Description</label>
-                                        <textarea type="text" class="form-control col-sm-8" id="exampleInputUsername1" placeholder="Description" name="Description"></textarea>
+                                        <textarea type="text" class="form-control col-sm-8" id="exampleInputUsername1" placeholder="Description" name="Description" required></textarea>
                                     </div>
                                     <div class="form-group row">
                                         <label for="mtite" class="col-sm-3 form-label">Release Date</label>
@@ -103,7 +103,7 @@
                                     <div class="d-flex  justify-content-space-between">
                                     <div class ="form-group">
                                         <label for="exampleInputMobile" class="align-top  col-form-label">Actors</label>
-                                        <select class="selection-2 " name="Actor_id[]" tabindex="-1"  required aria-hidden="true" multiple>
+                                        <select class="selection-2 " name="Actor_id[]" tabindex="-1"  required aria-hidden="true" required multiple>
                                             @foreach($actors as $actor)
                                                 <option value="{{$actor->id}}">{{$actor->First_Name}}</option>
                                             @endforeach
@@ -112,7 +112,7 @@
 
                                     <div class ="form-group float-right">
                                         <label for="exampleInputMobile" class="align-top col-form-label">Crews</label>
-                                        <select class="selection-2 " name="Crew_id[]" tabindex="-1" aria-hidden="true" multiple>
+                                        <select class="selection-2 " name="Crew_id[]" tabindex="-1" aria-hidden="true" required multiple>
                                             @foreach($crews as $crew)
                                                 <option value="{{$crew->id}}">{{$crew->First_Name}}---{{$crew->Role}}</option>
                                             @endforeach
@@ -136,13 +136,13 @@
                                     <div class="form-group row">
                                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Cinema name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputUsername2" placeholder="cname" name="Name">
+                                            <input type="text" class="form-control" id="exampleInputUsername2" placeholder="cname" required name="Name">
                                         </div>
                                     </div>
                                     <!-- Here is a selection form for cinema -->
                                     <div class ="form-group">
                                         <label for="exampleInputMobile" class="col-sm-3 col-form-label">City</label>
-                                        <select class="selection-2 " name="City_id" tabindex="-1" aria-hidden="true">
+                                        <select class="selection-2 " name="City_id" tabindex="-1" aria-hidden="true" required>
                                             @foreach($cities as $city)
                                                 <option value="{{$city->id}}">{{$city->Name}}</option>
                                             @endforeach
@@ -151,12 +151,12 @@
                                     <div class="form-group row">
                                         <label for="exampleInputMobile" class="col-sm-3 col-form-label">Address</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputMobile" placeholder="addess" name="Address">
+                                            <input type="text" class="form-control" id="exampleInputMobile" placeholder="addess" name="Address" required>
 
                                         <div class="form-group row">
                                             <label for="exampleInputMobile" class="col-sm-3 col-form-label">Number of seats</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" id="exampleInputMobile" placeholder="seat exists in your cinema" name="Number_Of_Seat">
+                                                <input type="number" class="form-control" id="exampleInputMobile"  required placeholder="seat exists in your cinema" name="Number_Of_Seat">
                                             </div>
                                     </div>
 
@@ -177,13 +177,13 @@
                                     <div class="form-group row">
                                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Firstname</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputUsername2" placeholder="fname" name="First_Name">
+                                            <input type="text" class="form-control" id="exampleInputUsername2" required placeholder="fname" name="First_Name">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label" >Lastname</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputEmail2" placeholder="lname" name="Last_Name">
+                                            <input type="text" required class="form-control" id="exampleInputEmail2" placeholder="lname" name="Last_Name">
                                         </div>
                                     </div>
 
@@ -191,7 +191,7 @@
                                         <label for="exampleInputFile" class="col-sm-3 col-form-label">Actor Picture</label>
                                         <div class="input-group col-sm-8">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="cover" name="Actor_Picture">
+                                                <input type="file" class="custom-file-input" id="cover" required name="Actor_Picture">
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
@@ -202,7 +202,7 @@
                                     <div class="form-group row">
                                         <label for="exampleInputMobile" class="col-sm-3 col-form-label">About</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputMobile" placeholder="About" name="About">
+                                            <input type="text" required class="form-control" id="exampleInputMobile" placeholder="About" name="About">
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -221,32 +221,32 @@
                                     <div class="form-group row">
                                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">First name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputUsername2" placeholder="firstname" name="First_Name">
+                                            <input type="text" class="form-control" required id="exampleInputUsername2" placeholder="firstname" name="First_Name">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Last name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputEmail2" placeholder="lastname" name="Last_Name">
+                                            <input type="text" class="form-control" required id="exampleInputEmail2" placeholder="lastname" name="Last_Name">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputMobile" class="col-sm-3 col-form-label">About</label>
                                         <div class="col-sm-9">
-                                            <textarea type="text" class="form-control" id="exampleInputMobile" placeholder="About crew" name="About"></textarea>
+                                            <textarea type="text" class="form-control" id="exampleInputMobile" placeholder="About crew" required name="About"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Role</label>
+                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label" required>Role</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Actor role" name="Role">
+                                            <input type="text" class="form-control" id="exampleInputPassword2" required placeholder="Actor role" name="Role">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputFile" class="col-sm-3">Poster</label>
                                         <div class="input-group col-sm-8">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="cover" name="Crew_Picture">
+                                                <input type="file" class="custom-file-input" id="cover" required name="Crew_Picture">
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                             <div class="input-group-append">

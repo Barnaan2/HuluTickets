@@ -25,6 +25,6 @@ class Movie extends Model
       return $this->hasMany('App\Models\MovieShow','Movie_id') ;
     }
     public function getCrew(){
-        return $this->belongsToMany('App\Models\Crew','movies_crews','Movie_id','Crew_id');
+        return $this->belongsToMany('App\Models\Crew','movie_crews','Movie_id','Crew_id');
     }
 }

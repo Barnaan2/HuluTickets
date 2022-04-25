@@ -47,10 +47,10 @@ public function addMovieTo()
     }
     $Crews =request('Crew_id');
     foreach ($Crews as $crew){
-        $relations = \App\Models\MovieActor::create(
+        $relations = \App\Models\Movie_crew::create(
             [
-                'Movie_id' =>  $crew ,
-                'Actor_id'=> $mv_id
+                'Movie_id' =>  $mv_id,
+                'Crew_id'=> $crew
             ]);
         $relations->save();
 

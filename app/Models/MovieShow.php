@@ -36,4 +36,7 @@ class MovieShow extends Model
  public function getCinema(){
         return $this->belongsTo('App\Models\Cinema','Cinema_id');
  }
+ public function getSeatNumber(){
+    return $this->belongsToMany('App\Models\Seat','movieshow_seats','Movieshow_id','Seat_id');
+}
 }

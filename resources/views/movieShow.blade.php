@@ -17,12 +17,13 @@
             </div>
             <div class=" movie-shows mt-3 ">
                 @foreach($movieshow as $cinemas)
-                    <div class="movie-show bg-primary">
+                  <a href= "/test/{{$cinemas->id}}" target= "blank" >  <div class="movie-show bg-primary">
                       <h4>   {{$cinemas->getCinema->Name}} </h4>
                        <h4>  {{$cinemas->getCinema->Address}}</h4>
                         <span> day </span>{{$cinemas->getSchedule->Show_Date}} <span> ሰሃት </span>
                         {{$cinemas->getSchedule->Show_Time}}
                     </div>
+</a>
                 @endforeach
 
             </div>

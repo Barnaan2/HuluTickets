@@ -1,0 +1,94 @@
+HOw to give set numbers?
+
+1 create table that has seat number and seat id 10-1000
+<seatno->seat_id>
+form
+<fields set> onclick</field seat> it will add the selected seat_id to an array [1ffaa,2ffa ,3faaa] = seat_array:
+THIS FORM ALSO TAKES THE CUSTOMER PHONE NUMBER AND ALL INFORMATION TO CREATE THEM.
+form
+
+
+-------------------------------------------------------------------
+ doshit($movieshow_id,$CUTOMER_INFO _TO_CRATE_THEM,$selected.seats)
+-------------------------------------------------------------------
+count_cutomer =()+1;
+count_the_selected_array;
+
+
+
+CREATE A CUTOMER TABLE element;
+mv_id and seat_id
+foreach(seat_array as seat_id)
+{
+seat_in::input seat_id and movie_show_id
+table has
+first_count = count(seat_in) + 1;
+1.seat_in_id || 2.seat_id || 3.movie_show_id '''''to display element check the created at if null activate unless diactivate for that i use seat id;
+ 1                 2              1
+ 2                 3              1
+ 3                  4              1
+
+doshit($array+firstCount,first_count_set_in,$first_count_customer);
+
+
+
+
+
+
+
+
+customer id may be some temporary number or something else
+i have the phone number and first name of the user and it will help me create customer id;
+
+ 
+customer_seat_in table
+id         customer_id   seat_in_id
+1             1            1
+2             1             2
+3             1              3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleting if expired
+
+
+if(time >= 20min)
+{
+if(isPay(id))
+{
+sent him his coupon related to his seat no
+
+}
+else{  
+ $disq = find all where customer_id == above id;  
+$array_to_store_seat_in_id  = [];
+
+foreach($disq -> as $one)
+{
+ $seat_in_id = $one->seat_in_id
+
+array_push = ('$array',$seat_in_id);
+
+
+}
+function deletor($array);
+
+delete(disq);
+c
+}
+}
+
+2.create movieshow_id and seat number table[cinema_seat no]  5  ----- 10 reserved
+//3.create movie show_cinema seat table 

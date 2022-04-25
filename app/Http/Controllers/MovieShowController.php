@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Cinema;
 use App\Models\Movie;
+use App\Models\Seat;
+use App\Models\MyCustomer;
 use App\Models\MovieShow;
+use App\Models\Movieshow_seat;
 use Illuminate\Http\Request;
 
 class MovieShowController extends Controller
 {
-    // Entry point or Index
+   // Entry point or Index
     public function index(){
         $movie = SystemController::summer(Movie::latest()->paginate(3));
         $cinemas = Cinema::all();
@@ -53,6 +56,7 @@ class MovieShowController extends Controller
        return redirect('Admin')->with('alert','you Have successfully added a new movie to Show');
    }
    public function addCinema(){
+
         $cinema = Cinema::create([
             'Name' => request('Name'),
             'Address'=> request('Address'),
@@ -60,6 +64,45 @@ class MovieShowController extends Controller
             'City_id'=>request('City_id')
         ]);
         $cinema->save();
-        return redirect('dashboard');
+        return redirect('/');
    }
+public function NewOne($id){
+    $numberOfSeats =\App\Models\Movieshow::find($id)->getCinema->Number_Of_Seats;
+   $MS_id = $id;
+    $arrayOfSeats = SystemController::AssignSeat($numberOfSeats,$MS_id);
+
+    return view('Chooseseat',[
+        'MS_id' => $MS_id,
+      'arrayOfSeats'=> $arrayOfSeats]);
+}
+
+
+//seat assign
+public function seatController($MS_id){
+$choosed = request('ChoosedSeats');
+$no_of_seat = count($choosed);
+    $name = request('Name');
+    $email = request('Email_Address');
+   $customer = MyCustomer::create(
+      [ 'Name'=>request('Name'),
+       'Email_Address' => request('Email_Address')
+   ]);
+   $customer->save();
+{foreach($choosed as $seat)
+   $seat_in = Movieshow_seat::create([
+    'Movieshow_id' => $MS_id,
+    'Seat_id'     => $seat
+
+   ]);
+   $seat_in->save();
+}
+$Customer_id = Mycustomer::latest('created_at')->first()->id;
+$me = Movieshow_seat::latest('created_at')->paginate($no_of_seat);
+$Movieshow_seat_id= array();
+foreach($me as $m){
+    array_push($Movieshow_seat_id, $m->id);
+}
+ $a = SystemController::Customer_seat($Customer_id,$Movieshow_seat_id);
+return;
+}
 }
