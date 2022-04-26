@@ -153,7 +153,7 @@
 
                 <div class=" cinema">
 
-                        <a class="cinema-name" href="#" ></a> <h3 class="name">{{$cinema->Name}}</h3></a>
+                        <a class="cinema-name" href="/cinema/{{$cinema->id}}" ><h3 class="name">{{$cinema->Name}}</h3></a>
 
                 </div>
             </div>

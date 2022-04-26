@@ -100,7 +100,8 @@ public function schedule($date,$time){
         ]);
 
     $newschedule->save();
-    return Count(Actor::all())+1;
+    $shedule_id = Schedule::latest('created_at')->first()->id;
+    return $shedule_id;
 }
 
 

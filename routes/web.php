@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','MovieShowController@index')->name('index');
 Route::get('/test/{id}','MovieShowController@NewOne');
+Route::get('/cinema/{id}','MovieShowController@CinemaMovie');
 Route::post('/saveChoosed/{id}','MovieShowController@seatController');
 Route::post('/newCinema','MovieShowController@addCinema')->name('addCinema');
 Route::get('/Check/{id}','MovieShowController@movieDetail')->name('detail');

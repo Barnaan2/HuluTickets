@@ -79,10 +79,9 @@ public function NewOne($id){
 
 //seat assign
 public function seatController($MS_id){
+
 $choosed = request('ChoosedSeats');
 $no_of_seat = count($choosed);
-    $name = request('Name');
-    $email = request('Email_Address');
    $customer = MyCustomer::create(
       [ 'Name'=>request('Name'),
        'Email_Address' => request('Email_Address')
@@ -102,7 +101,18 @@ $Movieshow_seat_id= array();
 foreach($me as $m){
     array_push($Movieshow_seat_id, $m->id);
 }
- $a = SystemController::Customer_seat($Customer_id,$Movieshow_seat_id);
-return;
+//https://github.com/Barnaan2/HuluTickets.git
+ return redirect('/');
 }
+
+
+
+// The customer view
+public function CinemaMovie($id){
+        $cinema = Cinema::find($id);
+        $movieshow = $cinema->getMovieshow;
+
+        return view('cinema_movieshow',compact('movieshow'));
+}
+
 }
