@@ -39,15 +39,20 @@ $customerseat->save();
 
 
 }
+public function allseats($number){
+    $arrayofseats = array();
+    // $seats = Seat::all();
+    for ($i = 1; $i <= $number; $i++) {
+        array_push($arrayofseats, $i);
+    }
+    return $arrayofseats;
+}
 
 
     //assign seat
     public function AssignSeat($number,$MS_id){
-    $arrayofseats = array();
+    $arrayofseats = $this->allseats($number);
         // $seats = Seat::all();
-                 for ($i = 1; $i <= $number; $i++) {
-                array_push($arrayofseats, $i);
-       }
         $reserved = SystemController::findReserved($MS_id);
     $avilable = array_diff($arrayofseats,$reserved);
 return $avilable;
