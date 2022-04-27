@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+@extends('layouts.app')
+
+@section('content')
 
 <div class="container-scroller">
     <!-- partial:../../partials/_sidebar.html -->
@@ -269,7 +272,7 @@
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
                     <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Yaa'ii team©  2022</span>
-
+                    @endsection
                 </div>
             </footer>
 </body>

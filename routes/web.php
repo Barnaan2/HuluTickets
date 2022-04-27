@@ -3,8 +3,11 @@
 use App\Models\Cinema;
 use App\Models\Movie;
 use App\Models\Movieshow;
-// use App\Http\Controllers\BasicLogics;
+ use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +40,19 @@ Route::get('/Admin', function () {
     $movies = Movie::all();
     return view('admin',compact('cinemas','movies'));
 })->name('Admin');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHistory']],function(){
+    // you can add route as much as you want here:
+    // all route dedicated to admin and cinema owner added here
+    Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+});
+
+Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistory']],function(){
+    // you can add route as much as you want here:
+    // all route dedicated to  cinema owner added here
+    Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
+});

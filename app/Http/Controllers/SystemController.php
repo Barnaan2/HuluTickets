@@ -38,10 +38,6 @@ $customerseat->save();
  return CustomerSeat_in_Movieshow::all();
 
 
-
-
-
-
 }
 
 
@@ -49,7 +45,6 @@ $customerseat->save();
     public function AssignSeat($number,$MS_id){
     $arrayofseats = array();
         // $seats = Seat::all();
-
                  for ($i = 1; $i <= $number; $i++) {
                 array_push($arrayofseats, $i);
        }
@@ -225,6 +220,7 @@ public function genateCupon($numberSeat){
 //// the method that check the weather the time of specific show is expired or not
 //public function checkExpiredMovieshow($MovieShows){
 // $current_date = date();
+// i think it would be better if could merge time and date to create time stamp and split it foe use
 //  $current_time = time();
 //    $current_date_array = date_parse_from_format('m-d-y',$current_date);
 //     $current_time_array = time_parse_from_format('h-m-s',$current_time);

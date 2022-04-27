@@ -70,7 +70,7 @@ public function NewOne($id){
     $numberOfSeats =\App\Models\Movieshow::find($id)->getCinema->Number_Of_Seats;
    $MS_id = $id;
     $arrayOfSeats = SystemController::AssignSeat($numberOfSeats,$MS_id);
-
+//    $allSeats=SystemController::allseats($numberOfSeats);
     return view('Chooseseat',[
         'MS_id' => $MS_id,
       'arrayOfSeats'=> $arrayOfSeats]);

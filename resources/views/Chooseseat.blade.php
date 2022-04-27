@@ -6,6 +6,7 @@
                                      @csrf
                         <span class="label-input100">Seat and Customer info</span>
        <br>
+{{--    in_array($seat,the array)--}}
                                 @foreach($arrayOfSeats as $seat)
                                     <input type="checkbox" name="ChoosedSeats[]" value="{{$seat}}">{{$seat}}</input>
                                 @endforeach

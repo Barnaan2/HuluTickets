@@ -1,5 +1,6 @@
-<html>
-<body>
+@extends('layouts.app')
+
+@section('content')
 Add movie
 <form action="/" enctype="multipart/form-data" method="post">
     @csrf
@@ -72,6 +73,4 @@ Add Crew
     <input type="submit" value="Set Online">
 </form>
 
-
-</body>
-</html>
+    @endsection
