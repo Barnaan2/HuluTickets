@@ -8,7 +8,9 @@ use App\Models\Seat;
 use App\Models\MyCustomer;
 use App\Models\MovieShow;
 use App\Models\Movieshow_seat;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MovieShowController extends Controller
 {
@@ -21,24 +23,9 @@ class MovieShowController extends Controller
     }
 
     // TO view the detail of the movie
-    public function movieDetail($id)
-    {
-        $movie=\App\Models\Movie::find($id);
-     $actors = $movie->getActor;
-    $crews = $movie->getCrew;
-        return view('/Check', compact('movie','actors','crews'));
-    }
 
 
-    //To show more detail for Booking
-   public function moreDetail($id)
-   {
-       $movie=\App\Models\Movie::find($id);// movie id
 
-       $movieshow=$movie->getMovieshow;
-
-       return view('movieShow', compact('movieshow', 'movie'));
-   }
    // TO add new MovieShow
    public function addMovieShow ()
    {
@@ -55,56 +42,7 @@ class MovieShowController extends Controller
        $newmovieshow->save();
        return redirect('Admin')->with('alert','you Have successfully added a new movie to Show');
    }
-   public function addCinema(){
 
-        $cinema = Cinema::create([
-            'Name' => request('Name'),
-            'Address'=> request('Address'),
-            'Number_Of_Seats' => request('Number_Of_Seat'),
-            'City_id'=>request('City_id')
-        ]);
-        $cinema->save();
-        return redirect('/');
-   }
-public function NewOne($id){
-    $numberOfSeats =\App\Models\Movieshow::find($id)->getCinema->Number_Of_Seats;
-   $MS_id = $id;
-    $arrayOfSeats = SystemController::AssignSeat($numberOfSeats,$MS_id);
-$allSeats=SystemController::allseats($numberOfSeats);
-    return view('Chooseseat',[
-        'MS_id' => $MS_id,
-      'allSeats'=> $allSeats,
-      'arrayOfSeats'=> $arrayOfSeats]);
-}
-
-
-//seat assign
-public function seatController($MS_id){
-
-$choosed = request('ChoosedSeats');
-$no_of_seat = count($choosed);
-   $customer = MyCustomer::create(
-      [ 'Name'=>request('Name'),
-       'Email_Address' => request('Email_Address')
-   ]);
-   $customer->save();
-{foreach($choosed as $seat)
-   $seat_in = Movieshow_seat::create([
-    'Movieshow_id' => $MS_id,
-    'Seat_id'     => $seat
-
-   ]);
-   $seat_in->save();
-}
-$Customer_id = Mycustomer::latest('created_at')->first()->id;
-$me = Movieshow_seat::latest('created_at')->paginate($no_of_seat);
-$Movieshow_seat_id= array();
-foreach($me as $m){
-    array_push($Movieshow_seat_id, $m->id);
-}
-//https://github.com/Barnaan2/HuluTickets.git
- return redirect('/');
-}
 
 
 
@@ -112,8 +50,21 @@ foreach($me as $m){
 public function CinemaMovie($id){
         $cinema = Cinema::find($id);
         $movieshow = $cinema->getMovieshow;
-
-        return view('cinema_movieshow',compact('movieshow'));
+$cinemaName = $cinema->Name;
+        return view('cinema_movieshow',compact('movieshow','cinemaName'));
 }
+// to register new cinema admin
+//
+//public function cinemaAdmin()
+//{
+//    protected function create(array $data)
+//    {
+//        return User::create([
+//            'name' => $data['name'],
+//            'email' => $data['email'],
+//            'password' => Hash::make($data['password']),
+//        ]);
+//    }
+//
 
 }

@@ -24,10 +24,6 @@
     }
 }
 
-.header-dark .navbar .navbar-brand {
-    font-weight: bold;
-    color: inherit;
-}
 
 .header-dark .navbar .navbar-brand:hover {
     color: #f0f0f0;

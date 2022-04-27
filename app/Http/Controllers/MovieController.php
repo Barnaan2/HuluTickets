@@ -59,5 +59,13 @@ public function addMovieTo()
     return redirect('/');
 }
 
+    public function movieDetail($id)
+    {
+        $movie=\App\Models\Movie::find($id);
+        $actors = $movie->getActor;
+        $crews = $movie->getCrew;
+        return view('/Check', compact('movie','actors','crews'));
+    }
+
 
 }
