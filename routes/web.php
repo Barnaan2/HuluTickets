@@ -5,6 +5,7 @@ use App\Models\Movie;
 use App\Models\Movieshow;
  use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ActorAndCrewController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 

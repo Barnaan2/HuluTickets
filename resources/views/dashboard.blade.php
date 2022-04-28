@@ -1,11 +1,14 @@
 <html>
 <head>
+    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>cinema </title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+
 @extends('layouts.app')
 
 @section('content')
@@ -75,55 +78,57 @@
                                 <p class="card-description">Add the movie here</p>
                                 <form class="forms-sample " action="/" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group row">
-                                        <label for="mtitle" class="col-sm-3 form-label">Title</label>
-                                        <input type="text" class="form-control col-sm-8" id="exampleInputUsername1"  required placeholder="Username" name="Title">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputFile" class="col-sm-3 ">Poster</label>
-                                        <div class="input-group col-sm-8">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="cover" name="Poster" required>
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text ">Upload</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="mtitle" class="col-sm-3">Description</label>
-                                        <textarea type="text" class="form-control col-sm-8" id="exampleInputUsername1" placeholder="Description" name="Description" required></textarea>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="mtite" class="col-sm-3 form-label">Release Date</label>
-                                        <input type="date" class="form-control col-sm-8" id="exampleInputUsername1"  required placeholder="Username" name="Release_Date">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="mtie" class="col-sm-3 form-label">Trailer Link</label>
-                                        <input type="text" class="form-control col-sm-8" id="exampleInputUsername1"  required placeholder="Username" name="Tailer_Link">
-                                    </div>
-                                    <div class="d-flex  justify-content-space-between">
-                                    <div class ="form-group">
-                                        <label for="exampleInputMobile" class="align-top  col-form-label">Actors</label>
-                                        <select class="selection-2 " name="Actor_id[]" tabindex="-1"  required aria-hidden="true" required multiple>
-                                            @foreach($actors as $actor)
-                                                <option value="{{$actor->id}}">{{$actor->First_Name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
 
-                                    <div class ="form-group float-right">
-                                        <label for="exampleInputMobile" class="align-top col-form-label">Crews</label>
-                                        <select class="selection-2 " name="Crew_id[]" tabindex="-1" aria-hidden="true" required multiple>
-                                            @foreach($crews as $crew)
-                                                <option value="{{$crew->id}}">{{$crew->First_Name}}---{{$crew->Role}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                    <span class="focus-input100"></span>
-                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                    <div class="form-group row">
+                                      <label for="mtitle" class="col-sm-3 form-label">Title</label>
+                                      <input type="text" class="form-control col-sm-8" id="exampleInputUsername1"  required placeholder="Username" name="Title">
+                                  </div>
+                                  <div class="form-group row">
+                                      <label for="exampleInputFile" class="col-sm-3 ">Poster</label>
+                                      <div class="input-group col-sm-8">
+                                          <div class="custom-file">
+                                              <input type="file" class="custom-file-input" id="cover" name="Poster" required>
+                                              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                          </div>
+                                          <div class="input-group-append">
+                                              <span class="input-group-text ">Upload</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label for="mtitle" class="col-sm-3">Description</label>
+                                      <textarea type="text" class="form-control col-sm-8" id="exampleInputUsername1" placeholder="Description" name="Description" required></textarea>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label for="mtite" class="col-sm-3 form-label">Release Date</label>
+                                      <input type="date" class="form-control col-sm-8" id="exampleInputUsername1"  required placeholder="Username" name="Release_Date">
+                                  </div>
+                                  <div class="form-group row">
+                                      <label for="mtie" class="col-sm-3 form-label">Trailer Link</label>
+                                      <input type="text" class="form-control col-sm-8" id="exampleInputUsername1"  required placeholder="Username" name="Tailer_Link">
+                                  </div>
+                                  <div class="d-flex  justify-content-space-between">
+                                  <div class ="form-group">
+                                      <label for="exampleInputMobile" class="align-top  col-form-label">Actors</label>
+                                      <select class="selection-2 " name="Actor_id[]" tabindex="-1"  required aria-hidden="true" required multiple>
+                                          @foreach($actors as $actor)
+                                              <option value="{{$actor->id}}">{{$actor->First_Name}}</option>
+                                          @endforeach
+                                      </select>
+                                  </div>
+
+                                  <div class ="form-group float-right">
+                                      <label for="exampleInputMobile" class="align-top col-form-label">Crews</label>
+                                      <select class="selection-2 " name="Crew_id[]" tabindex="-1" aria-hidden="true" required multiple>
+                                          @foreach($crews as $crew)
+                                              <option value="{{$crew->id}}">{{$crew->First_Name}}---{{$crew->Role}}</option>
+                                          @endforeach
+                                      </select>
+                                  </div>
+                              </div>
+                                  <span class="focus-input100"></span>
+                                  <button type="submit" class="btn btn-primary me-2">Submit</button>
+
 
                                 </form>
                             </div>
@@ -177,38 +182,41 @@
                                 <p class="card-description">Add the Actor here</p>
                                 <form class="forms-sample" action="/AddActor" method="post" enctype="multipart/form-data">
                                   @csrf
-                                    <div class="form-group row">
-                                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Firstname</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputUsername2" required placeholder="fname" name="First_Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label" >Lastname</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" required class="form-control" id="exampleInputEmail2" placeholder="lname" name="Last_Name">
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group row">
-                                        <label for="exampleInputFile" class="col-sm-3 col-form-label">Actor Picture</label>
-                                        <div class="input-group col-sm-8">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="cover" required name="Actor_Picture">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text ">Upload</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">About</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" required class="form-control" id="exampleInputMobile" placeholder="About" name="About">
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                  <div class="my-2">
+                                   
+                                   <input type="text" name="First_Name" id="First_Name" class="form-control @error('First_Name') is-invalid @enderror" placeholder="First_Name" value="{{ old('First_Name') }}">
+                                   @error('First_Name')
+                                     <div class="invalid-feedback">{{ $message }}</div>
+                                   @enderror
+                                 </div>
+                       
+                                 <div class="my-2">
+                                   <input type="text" name="Last_Name" id="Last_Name" class="form-control @error('Last_Name') is-invalid @enderror" placeholder="Last_Name" value="{{ old('Last_Name') }}">
+                                   @error('Last_Name')
+                                     <div class="invalid-feedback">{{ $message }}</div>
+                                   @enderror
+                                 </div>
+                                 
+                                 <div class="my-2">
+                                 
+                                   <input type="file" name="file" id="file" accept="Picture_Link/*" class="form-control @error('file') is-invalid @enderror">
+                                   @error('file')
+                                     <div class="invalid-feedback">{{ $message }}</div>
+                                   @enderror
+                                 </div>
+                       
+                                 <div class="my-2">
+                                   <textarea name="About" id="About" rows="6" class="form-control @error('About') is-invalid @enderror" placeholder="About Actor">{{ old('About') }}</textarea>
+                                   @error('About')
+                                     <div class="invalid-feedback">{{ $message }}</div>
+                                   @enderror
+                                 </div>
+                       
+                                 <div class="my-2">
+                                   <input type="submit" value="Add Actor" class="btn btn-primary">
+                                 </div>
+
                                 </form>
                             </div>
                         </div>
@@ -219,46 +227,51 @@
                             <div class="card-body">
                                 <h4 class="card-title">Crew</h4>
                                 <p class="card-description">Add the Crew here</p>
-                                <form class="forms-sample" action="/add" enctype="multipart/form-data" method="post">
+                                <form  action="/add" enctype="multipart/form-data" method="post">
                                    @csrf
-                                    <div class="form-group row">
-                                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">First name</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" required id="exampleInputUsername2" placeholder="firstname" name="First_Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Last name</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" required id="exampleInputEmail2" placeholder="lastname" name="Last_Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">About</label>
-                                        <div class="col-sm-9">
-                                            <textarea type="text" class="form-control" id="exampleInputMobile" placeholder="About crew" required name="About"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label" required>Role</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputPassword2" required placeholder="Actor role" name="Role">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputFile" class="col-sm-3">Poster</label>
-                                        <div class="input-group col-sm-8">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="cover" required name="Crew_Picture">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text ">Upload</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   <div class="my-2">
+                                   
+                                   <input type="text" name="First_Name" id="First_Name" class="form-control @error('First_Name') is-invalid @enderror" placeholder="First_Name" value="{{ old('First_Name') }}">
+                                   @error('First_Name')
+                                     <div class="invalid-feedback">{{ $message }}</div>
+                                   @enderror
+                                 </div>
+                       
+                                 <div class="my-2">
+                                   <input type="text" name="Last_Name" id="Last_Name" class="form-control @error('Last_Name') is-invalid @enderror" placeholder="Last_Name" value="{{ old('Last_Name') }}">
+                                   @error('Last_Name')
+                                     <div class="invalid-feedback">{{ $message }}</div>
+                                   @enderror
+                                 </div>
+                       
+                                 <div class="my-2">
+                                 
+                                   <input type="text" name="Role" id="Role" class="form-control @error('Role') is-invalid @enderror" placeholder="Role" value="{{ old('Role') }}">
+                                   @error('Role')
+                                     <div class="invalid-feedback">{{ $message }}</div>
+                                   @enderror
+                                 </div>
+                       
+                                 
+                                 <div class="my-2">
+                                 
+                                   <input type="file" name="file" id="file" accept="Picture_Link/*" class="form-control @error('file') is-invalid @enderror">
+                                   @error('file')
+                                     <div class="invalid-feedback">{{ $message }}</div>
+                                   @enderror
+                                 </div>
+                       
+                                 <div class="my-2">
+                                   <textarea name="About" id="About" rows="6" class="form-control @error('About') is-invalid @enderror" placeholder="About Crew">{{ old('About') }}</textarea>
+                                   @error('About')
+                                     <div class="invalid-feedback">{{ $message }}</div>
+                                   @enderror
+                                 </div>
+                       
+                                 <div class="my-2">
+                                   <input type="submit" value="Add Crew" class="btn btn-primary">
+                                 </div>
 
-                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
 
                                 </form>
                             </div>
