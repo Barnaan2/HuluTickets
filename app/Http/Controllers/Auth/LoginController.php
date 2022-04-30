@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -26,13 +27,17 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+   // protected $redirectTo = RouteServiceProvider::HOME;
 protected function redirectTo(){
     if(Auth()->user()->role==1){
         return redirect('dashboard');
     }
     elseif (Auth()->user()->role==2){
         return redirect('Admin');
+    }
+    elseif (Auth()->user()->role==3){
+        $id =Auth()->user()->id;
+        return redirect('Admin',$id);
     }
 }
     /**
@@ -53,10 +58,16 @@ protected function redirectTo(){
 
         if(auth()->attempt(array('email'=>$input['email'] ,'password'=>$input['password'] ))){
             if(Auth()->user()->role==1){
-                return redirect('dashboard');
+
+                return redirect()->route('RegisterMe');
             }
             elseif (Auth()->user()->role==2){
-                return redirect('Admin');
+                return redirect()->route('admin_dashboard');
+
+            }
+            elseif (Auth()->user()->role==3){
+ $id =Auth()->user()->id;
+                return redirect()->route('Admin',$id);
             }
         }
         else{

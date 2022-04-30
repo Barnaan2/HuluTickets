@@ -14,8 +14,8 @@ class VerificationController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller is responsible for handling email verification for any
-    | user that recently registered with the application. Emails may also
-    | be re-sent if the user didn't receive the original email message.
+    | CinemaAdmin that recently registered with the application. Emails may also
+    | be re-sent if the CinemaAdmin didn't receive the original email message.
     |
     */
 
@@ -26,7 +26,19 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo(){
+        if(Auth()->user()->role==1){
+            return redirect('dashboard');
+        }
+        elseif (Auth()->user()->role==2){
+            return redirect('Admin');
+        }
+        elseif (Auth()->user()->role==3){
+            $id =Auth()->user()->id;
+            return redirect('Admin',$id);
+        }
+    }
+   // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.

@@ -14,7 +14,7 @@ class Cinema extends Model
           'Number_Of_Seats',
           'City_id'
       ];
-  
+
       public function getCity(){
           return $this->belongsTo('App\Models\City','City_id');
       }
@@ -22,5 +22,7 @@ class Cinema extends Model
       public function getMovieSHow(){
           return $this->hasMany('App\Models\MovieShow','Cinema_id');
       }
+    public function getAdmin(){
+        return $this->belongsToMany('App\Models\User','cinema_admins','Cinema_id','User_id');
+    }
   }
-  

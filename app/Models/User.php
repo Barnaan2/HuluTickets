@@ -42,4 +42,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getCinema(){
+        return $this->belongsToMany('App\Models\Cinema','cinema_admins','User_id','Cinema_id');
+    }
 }

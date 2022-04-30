@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\softDeletes;
 class MovieShow extends Model
 { // use HasFactory;
     use SoftDeletes;
-    // may be the sold tickets do not gonna appear when the cinema admin adds movies
+    // may be the sold tickets do not gonna appear when the cinema Admin adds movies
     // but latter when they sell the tickets so i think it must be
     protected $fillable = [
         'Movie_id',

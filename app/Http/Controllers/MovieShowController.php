@@ -53,7 +53,7 @@ public function CinemaMovie($id){
 $cinemaName = $cinema->Name;
         return view('cinema_movieshow',compact('movieshow','cinemaName'));
 }
-// to register new cinema admin
+// to register new cinema Admin
 //
 //public function cinemaAdmin()
 //{

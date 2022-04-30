@@ -26,33 +26,65 @@ Route::get('/AddMovie','MovieController@addMovie')->name('addMovie');
 Route::post('/AddActor','ActorController@addActor')->name('addActor');
 Route::post('/addCrew','CrewController@addCrew')->name('addCrew');
 Route::post('/AddMovieShow','MovieShowController@addMovieShow')->name('addMovieshow');
+Route::post('/login/signUp','Auth\LoginController@login')->name('login.new');
 
-Route::get('/dashboard', function () {
-    $actors = \App\Models\Actor::all();
-    $cinemas = \App\Models\Cinema::all();
-    $movies = Movie::all();
-    $crews =\App\Models\Crew::all();
-    $cities =\App\Models\City::all();
-    return view('dashboard',compact('actors','movies','cinemas','crews','cities'));
-})->name('dashboard');
-Route::get('/Admin', function () {
-    $cinemas = \App\Models\Cinema::all();
-    $movies = Movie::all();
-    return view('admin',compact('cinemas','movies'));
-})->name('Admin');
-
-Auth::routes();
-
+//Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//
+//Route::group(['prefix'=>'Admin','middleware'=>['isAdmin','auth','PreventBackHistory']],function(){
+//    // you can add route as much as you want here:
+//    // all route dedicated to Admin and cinema owner added here
+//    Route::get('dashboard',[AdminController::class,'index'])->name('Admin.dashboard');
+//});
+//
+//Route::group(['prefix'=>'CinemaAdmin','middleware'=>['isUser','auth','PreventBackHistory']],function(){
+//    // you can add route as much as you want here:
+//    // all route dedicated to  cinema owner added here
+//    Route::get('dashboard',[UserController::class,'index'])->name('CinemaAdmin.dashboard');
+//});
 
-Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHistory']],function(){
-    // you can add route as much as you want here:
-    // all route dedicated to admin and cinema owner added here
-    Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+
+
+
+
+
+
+
+
+
+// every Auth concepts
+Auth::routes(['register'=>false]);
+Route::middleware(['middleware'=>'PreventBackHistory'])->group(function(){
+    Auth::routes();
 });
 
-Route::group(['prefix'=>'user','middleware'=>['isUser','auth','PreventBackHistory']],function(){
-    // you can add route as much as you want here:
-    // all route dedicated to  cinema owner added here
-    Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
+// every Auth
+Route::group(['middleware'=>'auth'],function(){
+ Route::group(['prefix'=>'superAdmin','middleware'=>['isSuperAdmin','PreventBackHistory']],
+     function(){
+Route::get('/dashboard','AdminController@index')->name('dashboard');
+Route::get('/add/Adm','AdminController@register')->name('RegisterMe');
+Route::post('/register/Admin','Auth\RegisterController@createAdmin')->name('register.SuperAdmin');
+
+         //All of the SuperAdmin route goes here so put it here
+
+    });
+
+
+
+    Route::group(['prefix'=>'Admin','middleware'=>['isAdmin','PreventBackHistory']],
+        function(){
+
+            //All of the Admin route goes here so put it here
+            Route::get('/Admin','AdminController@Indexs')->name('Admin');
+        });
+
+
+
+    Route::group(['prefix'=>'CinemaAdmin','middleware'=>['isCinemaAdmin','PreventBackHistory']],
+        function(){
+
+            //All of cinema  route goes here so put it here
+            Route::get('/Admin/{id}','AdminController@Index1')->name('Admin');
+        });
 });

@@ -14,6 +14,7 @@
 
             modaldisplay.classList.add('hidden')
         }
+
     </script>
 
 
@@ -34,18 +35,16 @@
 
         <br>
         <div class="seat-check">
-            {{--    in_array($seat,the array)--}}
-
             @foreach($allSeats as $seat)
                 @if(in_array($seat,$arrayOfSeats))
                     {{--  it will excute the following code if the seat is not reserved--}}
                     {{--        <p>the seat is not has been served </p>--}}
 
-                    <input type="checkbox" id="r{{$seat}}" name="ChoosedSeats[]" required value="{{$seat}}"/>
+                    <input type="checkbox" id="r{{$seat}}" name="ChoosedSeats[]"  value="{{$seat}}"/>
                     <label class="checkbox-alias" for="r{{$seat}}">{{$seat}}</label>
 
                 @else
-                    <input type="checkbox"  id="r{{$seat}}" name="ChoosedSeats[]" value="{{$seat}}"></input>
+                    <input type="checkbox"  id="r{{$seat}}" name="ChoosedSeats[]"  value="{{$seat}}"></input>
                     <label class="checkbox-alias1" for="r{{$seat}}">{{$seat}}</label>
                 @endif
             @endforeach
@@ -83,7 +82,7 @@
 
 
                     </div>
-
+         <input type="submit" name="pay">
                 </div>
             </div>
         </div>

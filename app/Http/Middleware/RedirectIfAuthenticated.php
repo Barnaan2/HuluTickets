@@ -19,6 +19,7 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        // i have understood this class just know its to redirect the CinemaAdmin after they logged in
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
@@ -26,10 +27,14 @@ class RedirectIfAuthenticated
 //                return redirect(RouteServiceProvider::HOME);
 //            }
             if(Auth::guard($guard)->check() && Auth()->user()->role==1){
-                return redirect('dashboard');
+                return redirect()->route('RegisterMe');
             }
             elseif (Auth::guard($guard)->check() && Auth()->user()->role==2){
-                return redirect('Admin');
+                return redirect()->route('Admin');
+            }
+            elseif (Auth::guard($guard)->check() && Auth()->user()->role==3){
+                $id = Auth()->user()->id;
+                return redirect()->route('Admin',$id);
             }
         }
 

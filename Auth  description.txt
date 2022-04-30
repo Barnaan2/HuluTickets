@@ -1,7 +1,7 @@
 |-------------------------------------------------|
-|    HuluTicket Auth Concepts                     |                         
+|    HuluTicket Auth Concepts                     |
 |-------------------------------------------------|
-
+ --NB: REMEMBER THAT LARAVEL HAS SOME SECURITY ISSUE WHEN IT COMES TO HANDLING MULTIPLE USERS
 
 1.THE USER TABLE: This table will have every user
  and admin information and will have one
@@ -13,7 +13,7 @@
  and it will help us to saparte the cinema which
  each user those who are cinema admins are blongs to.
 
-3.WHO ADDS NEW ADMINS? 
+3.WHO ADDS NEW ADMINS?
 
 -New admin will be added by the  Super Admin
  who will Be the CEO of HuluTickets. He has
@@ -27,20 +27,20 @@
  and become a legacy user, rather they wil fill
  and submit form about their cinema,address,
 email and others. then our sales group will
- contact them and register them with their 
+ contact them and register them with their
 cinemas which will involve  some business
  agrements too.
- 
+
 5.HOW MANY USERS ONE CINEMA COULD HAVE?
 
 -This depends on in our indvidual perspective.
-in my view it will be better if They have one 
+in my view it will be better if They have one
 user for now and in the upcomming versions
- 
+
 
 |----------------------------------|
 |A brief description about how     |
 |    HuluTickets Auth works        |
-|   -----------------------        |     
+|   -----------------------        |
 |   By Barnaan Tekalign            |
 |----------------------------------|
