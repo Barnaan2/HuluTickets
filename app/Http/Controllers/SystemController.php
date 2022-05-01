@@ -51,7 +51,7 @@ public function allseats($number){
 
     //assign seat
     public function AssignSeat($number,$MS_id){
-    $arrayofseats = $this->allseats($number);
+    $arrayofseats = SystemController::allseats($number);
         // $seats = Seat::all();
         $reserved = SystemController::findReserved($MS_id);
     $avilable = array_diff($arrayofseats,$reserved);

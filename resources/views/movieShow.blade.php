@@ -17,10 +17,10 @@
             </div>
             <div class=" movie-shows mt-3 ">
                 @foreach($movieshow as $cinemas)
-                  <a href= "/test/{{$cinemas->id}}" target= "blank" >  <div class="movie-show bg-primary">
+                  <a href= "/test/{{$cinemas->id}}" target= "blank" >  <div class="movie-show bg-light">
                       <h4>   {{$cinemas->getCinema->Name}} </h4>
                        <h4>  {{$cinemas->getCinema->Address}}</h4>
-                        <span> day </span>{{$cinemas->getSchedule->Show_Date}} <span> ሰሃት </span>
+                        <span> Date </span>{{$cinemas->getSchedule->Show_Date}} <span> Time </span>
                         {{$cinemas->getSchedule->Show_Time}}
                     </div>
 </a>

@@ -16,16 +16,16 @@ use Illuminate\Support\Facades\Auth;
 |--------------------------------------------------------------------------
 */
 Route::get('/','MovieShowController@index')->name('index');
-Route::get('/test/{id}','MovieShowController@NewOne');
+Route::get('/test/{id}','SeatController@NewOne');
 Route::get('/cinema/{id}','MovieShowController@CinemaMovie');
-Route::post('/saveChoosed/{id}','MovieShowController@seatController');
-Route::post('/newCinema','MovieShowController@addCinema')->name('addCinema');
-Route::get('/Check/{id}','MovieShowController@movieDetail')->name('detail');
+Route::post('/saveChoosed/{id}','SeatController@seatController');
+Route::post('/newCinema','CinemaController@addCinema')->name('addCinema');
+Route::get('/Check/{id}','MovieController@movieDetail')->name('detail');
 Route::post('/','MovieController@addMovieTo')->name('addMovieTo');
-Route::get('/Book/{id}','MovieShowController@moreDetail')->name('moreDetail');
+Route::get('/Book/{id}','ScheduleController@moreDetail')->name('moreDetail');
 Route::get('/AddMovie','MovieController@addMovie')->name('addMovie');
-Route::post('/AddActor','ActorAndCrewController@addActor')->name('addActor');
-Route::post('/add','ActorAndCrewController@addCrew')->name('addCrew');
+Route::post('/AddActor','ActorController@addActor')->name('addActor');
+Route::post('/addCrew','CrewController@addCrew')->name('addCrew');
 Route::post('/AddMovieShow','MovieShowController@addMovieShow')->name('addMovieshow');
 
 Route::get('/dashboard', function () {

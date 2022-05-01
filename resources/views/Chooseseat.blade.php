@@ -1,28 +1,78 @@
 @extends('layouts.secondBase')
 @section('Content')
 
-<div>
-<form  class="pl-4 pb-3"action="/saveChoosed/{{$MS_id}}" method = "post" >
-                                     @csrf
-                        <span class="label-input100">Seat and Customer info</span>
-       <br>
-{{--    in_array($seat,the array)--}}
+    <script>
 
-                                @foreach($allSeats as $seat)
-                                    @if(in_array($seat,$arrayOfSeats))
-            {{--  it will excute the following code if the seat is not reserved--}}
-        <p>the seat is not has been served </p>
-                                    <input type="checkbox" name="ChoosedSeats[]" value="{{$seat}}">{{$seat}}</input>
 
-                               @else
-            <p> the seat have been reserved </p>
-            {{-- this will be excuted if the seat is reserved--}}
-                                        @endif
-                                @endforeach
-                              <br>
-                            <label class="form-check-label" for="exampleCheck1">Name</label>
-                            <input type="text" required name="Name">
+        function paymodal(){
+            const modaldisplay=document.querySelector('.payment-modal')
 
+            modaldisplay.classList.remove('hidden')
+        }
+        function exitmodal(){
+            const modaldisplay=document.querySelector('.payment-modal')
+
+            modaldisplay.classList.add('hidden')
+        }
+    </script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 offset-md-1">
+
+          <h4 class="text-center mb-3">Select your seat</h4>
+           <div class="seat-info">
+             <p>Reserved</p> <span class="Reserved seat"> </span>
+              <p>Free</p> <span class="Free seat"> </span>
+               <p>Selected</p> <span class="Selectedseat seat"> </span>
+           </div>
+
+
+    <form  class="pl-4 pb-3"action="/saveChoosed/{{$MS_id}}" method = "post" >
+        @csrf
+
+        <br>
+        <div class="seat-check">
+            {{--    in_array($seat,the array)--}}
+
+            @foreach($allSeats as $seat)
+                @if(in_array($seat,$arrayOfSeats))
+                    {{--  it will excute the following code if the seat is not reserved--}}
+                    {{--        <p>the seat is not has been served </p>--}}
+
+                    <input type="checkbox" id="r{{$seat}}" name="ChoosedSeats[]" required value="{{$seat}}"/>
+                    <label class="checkbox-alias" for="r{{$seat}}">{{$seat}}</label>
+
+                @else
+                    <input type="checkbox"  id="r{{$seat}}" name="ChoosedSeats[]" value="{{$seat}}"></input>
+                    <label class="checkbox-alias1" for="r{{$seat}}">{{$seat}}</label>
+                @endif
+            @endforeach
+        </div>
+        <button class="btn btn-lg btn-primary right mb-2" onclick="paymodal()">Book</button>
+        <br>
+
+        <div class="payment-modal hidden">
+            <div class="card">
+                <div class="card-body"><span onclick="exitmodal()" class="exit right  ">X</span>
+                    <h4 class="card-title">Hulu Tickets</h4>
+                    <p class="card-description">Movie name</p>
+
+                    <div class="form-group ">
+                            <div class ="form-group ">
+                                <label class="form-check-label" for="exampleCheck1">Name</label>
+                                <input type="text" required name="Name" required>
+                                <span class="focus-input100"></span>
+                            </div>
+                            <div class ="form-group ">
+                                <label class="form-check-label" for="exampleCheck1">Email Address</label>
+                                <input type="email" name="Email_Address" required>
+                                <span class="focus-input100"></span>
+                            </div>
+                        <div class ="form-group">
+                            <label class="form-check-label" for="exampleCheck1">Email Address</label>
+                            <input type="email" name="Email_Address" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div class ="form-group">
@@ -32,11 +82,12 @@
                         </div>
 
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
 
-                    </form>
-
-
+                </div>
+            </div>
+        </div>
+    </form>
 
 
 </div>
@@ -44,9 +95,8 @@
 
 
 
-
-
-
+</div>
+</div>
 
 
 

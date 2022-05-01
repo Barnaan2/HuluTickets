@@ -5,7 +5,14 @@ body {
     font-family: Arial, Helvetica, Sans-Serif;
     color: #ccc;
     background: url('../img/body-bg.gif');
+
 }
+
+.navbar-brand{
+    width:80px;
+    height:55px;
+}
+
 
 h1,
 h2,
@@ -203,28 +210,42 @@ h3 {
     display: inline;
 }
 
-.box .movie {
-    width: 152px;
-    padding-right: 12px;
-}
-
-.movie-image {
+.movie {
     width: 160px;
     height: 222px;
     position: relative;
+    overflow:hidden;
+
 }
 
-.movie-image img {
-    width: 152px;
-    height: 214px;
+
+
+.movie img{
+    width: 100%;
+    height: 100%;
+
 }
 
-.movie-image a {
-    display: inline;
-    width: 152px;
-    height: 214px;
-    position: relative;
-    z-index: 2;
+
+.moviedesc {
+    background-color: white;
+    padding: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: transform 0.5s ease-in;
+    overflow-wrap: break-word;
+    color: black;
+
+
+}
+
+.movie:hover .moviedesc{
+    transform: translateY(0);
+
 }
 
 .play {
@@ -298,7 +319,6 @@ h3 {
 .cinema {
     border-radius: 10px;
     height: 40px;
-
     gap: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -322,7 +342,7 @@ h3 {
 
 .brands {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 
@@ -364,33 +384,30 @@ h3 {
     height: 85%;
 }
 
-@media (max-width:768px) {
-    .trailer {
-        display: none
+@media screen and (max-width:768px) {
+
+    #sub-navigation{
+        display: none;
     }
-    .selected-about {
-        flex-wrap: wrap;
-    }
-    .selected-movie {
-        flex-wrap: wrap;
-    }
+
 }
 
 .selected-about {
     margin-top: 25px;
     display: flex;
-
     gap: 20px;
 }
-.selected-desc{
-    width:50% ;
-}
-.selected-about h3{
 
+.selected-desc {
+    width: 50%;
+    overflow-wrap: break-word;
+}
+
+.selected-about h3 {
     font-size: 33px;
     font-family: 'Bitter', serif;
-
 }
+
 .selected-actors {
     display: flex;
     justify-content: space-around;
@@ -416,20 +433,95 @@ h3 {
 
 .movie-shows {
     display: flex;
-    align-items: center;
+    justify-content: space-around;
     gap: 10px;
     flex-wrap: wrap;
 }
 
 .movie-show {
-
     border-radius: 5px;
-    width: 280px;
-    height: 160px;
+    width: 230px;
+    height: 130px;
     padding: 10px 10px 10px 10px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
-.movie-show
+
+.seat-info{
+    display: flex;
+
+    gap: 20px;
+}
+.seat{
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+
+}
+.Reserved{
+    background-color: red;
+
+}
+.Selectedseat{
+    background-color: green;
+}
+.Free{
+    background-color: white;
+}
+.checkbox-alias{
+    background-color: white;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    position: relative;
+    transition: all 250ms  ease-out;
+    cursor: pointer;
+    text-align: center;
+    text-justify: center;
+}
+.checkbox-alias1{
+    background-color: red;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    position: relative;
+    transition: all 250ms  ease-out;
+   cursor: not-allowed;
+    text-align: center;
+    align-content: center;
+}
+.seat-check{
+    color: black;
+    width: 750px;
+}
+.seat-check input[type=checkbox]{
+    display: none;
+
+}
+.seat-check input[type=checkbox]:checked + .checkbox-alias{
+    background-color: green;
+
+}
+.payments{
+    height: 500px;
+}
+.payment-modal{
+    position: absolute;
+    width: 800px;
+    height: 800px;
+   top:30px;
+    left: 20px;
+    padding: 20px 20px 20px 20px;
+
+}
+.hidden{
+    display: none;
+}
+
+.exit{
+    cursor: pointer;
+}

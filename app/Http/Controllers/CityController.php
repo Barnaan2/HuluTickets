@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
-    //
+    //form to add movie
+    public function addCity(){
+
+    }
 }
