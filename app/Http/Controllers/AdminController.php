@@ -34,11 +34,19 @@ class AdminController
            $Cinema = $cinema;
 
        }
-       return view('dashboard.CinemaAdmin.cinemaadmin',compact('Cinema'));
+      $movieShows = $Cinema->getMovieshow;
+
+
+       return view('dashboard.CinemaAdmin.index',compact('Cinema','movieShows'));
     }
 
     public function register(){
         return view('dashboard.SuperAdmin.superAdmin');
+    }
+    public function addMovieShow(){
+        $movies = Movie::latest();
+        return view('dashboard.CinemaAdmin.addMovieShow',compact('$movies'));
+
     }
 }
 
