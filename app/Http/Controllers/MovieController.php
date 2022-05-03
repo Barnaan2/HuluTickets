@@ -34,7 +34,8 @@ public function addMovieTo()
             'Tailer_Link'=>request('Tailer_Link')
         ]);
     $NewMovie->save();
-    $mv_id = $number+1;
+    $mv_id = Movie::latest('created_at')->first()->id;
+
     $values =request('Actor_id');
     foreach ($values as $value){
        $relations = \App\Models\MovieActor::create(

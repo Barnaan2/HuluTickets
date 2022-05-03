@@ -6,15 +6,15 @@
                 </div>
                 <div class="row">
 
-@foreach($movies as $movie)
-                    <div class="col-md-3 col-lg-3 ">
+                     @foreach($movies as $movie)
+                    <div class="col-md-3 col-lg-3  mt-2">
                         <div class="card shadow  ">
                             <div class="card-body">
                                 <div class=" align-items-center ">
                                     <div class="col ">
-                                        <div class="poster-image">
-                                            <a href="/selected.html">
-                                                <img src="/{{$movie->Poster_Link}}">
+                                        <div class="poster-image" style="width:fit-content">
+                                            <a href="{{route('addSelected',$movie->id)}}">
+                                                <img src="/{{$movie->Poster_Link}}" style="width:100%" >
                                             </a>
                                         </div>
                                         <div class="text-dark font-weight-bold h5 mb-0">
@@ -26,9 +26,9 @@
                             </div>
                         </div>
                     </div>
+
+                @endforeach
                 </div>
-
-
             </div>
         </div>
 @endsection

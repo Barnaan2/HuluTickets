@@ -24,6 +24,52 @@ class SystemController extends Controller
 // }
 // return 'done';
 // }
+
+public function show($Mv_id)
+{
+    // find reserved will return all reserved seats
+ $reserved = SystemController::findReserved($Mv_id);
+//    $reserve = Movieshow_seat::where('Movieshow_id',$Mv_id)->get();
+//
+//    $reserved = array();
+//    foreach($reserve as $value){
+//
+//        array_push($reserved,$value->Seat_id);
+//    }
+//    dd($reserved);
+    $Movieshow_seat_id = array();
+    foreach ($reserved as $caught) {
+        $Movieshow_seat_ids = Movieshow_seat::where([
+            'Seat_id' =>$caught,
+            'Movieshow_id' => $Mv_id
+        ])->get();
+       foreach($Movieshow_seat_ids as $element){
+           array_push($Movieshow_seat_id,$element->id);
+       }
+
+    }
+//return ($Movieshow_seat_id);
+// all full array of the reserved movieshow seat id
+   $collection = array();
+    foreach ($Movieshow_seat_id as $id) {
+        $sold = CustomerSeat_in_Movieshow::firstwhere('Movieshow_seat_id', $id);
+        if($sold != []) {
+            array_push($collection, $sold->Movieshow_seat_id);
+
+
+        }
+    }
+
+    $huluseats = array();
+    foreach($collection as $element){
+        $seat = Movieshow_seat::find($element)->Seat_id;
+        array_push($huluseats,$seat);
+
+    }
+    return $huluseats;
+}
+
+
 public function Customer_seat($Customer_id,$Movieshow_seat_id){
     foreach($Movieshow_seat_id as $id)
 {
@@ -35,7 +81,8 @@ public function Customer_seat($Customer_id,$Movieshow_seat_id){
 $customerseat->save();
 }
 
- return CustomerSeat_in_Movieshow::all();
+
+ //return CustomerSeat_in_Movieshow::all();
 
 
 }
@@ -58,12 +105,27 @@ public function allseats($number){
 return $avilable;
 
     }
+//function findCustomer($MS_id){
+//    $reserved = SystemController::findReserved($MS_id);
+//    $Mv_Seat=array();
+//    // to get the movieshow seat id that will help me to find the customer reserved it
+//foreach ($reserved as $a){
+//   $ab = Movieshow_seat::where('seat_id',$a)->id;
+//   array_push($Mv_Seat,$ab);
+//}
+////to get customer id who reserved specific movie show
+//
+// foreach ($Mv_Seat as $abc){
+//     $customer_id = CustomerSeat_in_Movieshow::where('Movieshow_seat_id',$abc)->Mycustomer_id;
+//
+// }
+
 
 //method to find the reserved seats
 public function findReserved($MS_id)
 {
     $Movieshows = Movieshow::find($MS_id);
-  $seats= $Movieshows ->getSeatNumber;
+  $seats= $Movieshows->getSeatNumber;
 
     if(count($seats) == 0)
     {

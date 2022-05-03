@@ -4,25 +4,41 @@
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
                     <h6 class="text-dark mb-0">Active Shows</h6>
                 </div>
+                @if(session('alert'))
+                    <div class="alert alert-success">
+                        {{session('alert')}}
+                    </div>
+                @endif
                 <div class="row">
 
                     @foreach($movieShows as $movieShow)
-                    <div class="col-md-3 col-lg-3  mb-1">
+                    <div class="col-md-3 col-lg-3  mt-2" >
                         <div class="card shadow  ">
                             <div class="card-body">
                                 <div class=" align-items-center ">
-
+{{--                                    {{route('selectedStatus',$movieShow->getMovie->id)}}--}}
                                     <div class="col ">
-                                        <div class="poster-image">
-                                            <a href="{{route('selectedStatus',$movieShow->getMovie->id)}}">
-                                                <img src =/{{$movieShow->getMovie->Poster_Link}} alt="poster">
+                                        <div class="poster-image " style="width:fit-content">
+                                            <a href="{{route('selectedStatus',$movieShow->id)}}">
+                                                <img src ="/{{$movieShow->getMovie->Poster_Link}}" style="width:100% "  alt="poster">
                                             </a>
                                         </div>
                                         <div class="text-dark   ">
                                             <p>{{$movieShow->getMovie->Title}}</p>
                                         </div>
-                                        <div class="text-dark  ">
-                                            <p>Total{{$Cinema->Number_Of_Seats}} and sold {{$movieShow->Sold_Ticket}}</p>
+                                         <div class="progres">
+
+                                            <progress   value="{{$movieShow->Sold_Ticket}} "  max="{{$Cinema->Number_Of_Seats}}" />
+{{--                                            <p>Total{{$Cinema->Number_Of_Seats}} and sold {{$movieShow->Sold_Ticket}}</p>--}}
+                                         </div>
+                                        <div class="progress">
+
+                                            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="30"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:{{$movieShow->Sold_Ticket / $Cinema->Number_Of_Seats * 100}}%">
+
+
+                                            </div>
+
                                         </div>
                                     </div>
 
@@ -61,16 +77,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($movieShows as $movieShow)
                                     <tr>
-                                        <td>Kalesh Alew</td>
-                                        <td>2020</td>
-                                        <td>200</td>
+                                        <td>{{$movieShow->getMovie->Title}}</td>
+                                        <td>{{$movieShow->getSchedule->Show_Date}}</td>
+                                        <td>{{$movieShow->Price}}</td>
                                         <td>20</td>
                                         <td>10</td>
-                                        <td>30</td>
+                                        <td>{{$movieShow->Sold_Ticket}}</td>
                                         <td>$2000</td>
                                     </tr>
-
+@endforeach
                                     </tbody>
 
                                 </table>
@@ -79,8 +96,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
 @endsection

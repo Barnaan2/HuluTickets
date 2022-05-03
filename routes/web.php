@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 | Web Routes
 |--------------------------------------------------------------------------
 */
+Route::get('/a/{id}','SystemController@finda')->name('index');
 Route::get('/','MovieShowController@index')->name('index');
 Route::get('/test/{id}','SeatController@NewOne');
 Route::get('/cinema/{id}','MovieShowController@CinemaMovie');
@@ -84,7 +85,23 @@ Route::post('/register/Admin','Auth\RegisterController@createAdmin')->name('regi
     Route::group(['prefix'=>'CinemaAdmin','middleware'=>['isCinemaAdmin','PreventBackHistory']],
         function(){
 
-            //All of cinema  route goes here so put it here
-            Route::get('/Admin/{id}','AdminController@Index1')->name('Admin');
-        });
+            //All of cinema Admin route goes here
+//            Route::get('/abc/{id}','SystemController@show');
+            Route::get('/Admin/{id}','CinemaAdmin\HomeController@index')->name('Admin');
+            Route::get('/Status','CinemaAdmin\HomeController@MovieShowStatus')->name('MovieShowStatus');
+            Route::get('/addMovieShow','CinemaAdmin\HomeController@addMovieShow')->name('AddMovieShow');
+            Route::get('/selectedStatus/{id}','CinemaAdmin\HomeController@selectedStatus')->name('selectedStatus');
+            Route::get('/selected/{id}','CinemaAdmin\HomeController@addSelected')->name('addSelected');
+            Route::post('/save/{id}','CinemaAdmin\HomeController@addSelect')->name('addSelect');
+            Route::post('/addSold/{id}','CinemaAdmin\HomeController@addSold')->name('addSeat');
+
+
+
+            // routes for controlling the account settings
+            Route::get('/accountSetting/','CinemaAdmin\AccountController@index')->name('Account');
+            Route::post('/sendMessage','CinemaAdmin\AccountController@store')->name('Message');
+            Route::post('/profilePicture','CinemaAdmin\AccountController@profile')->name('profilePicture');
+
+
+    });
 });

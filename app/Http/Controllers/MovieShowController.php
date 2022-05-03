@@ -22,7 +22,7 @@ class MovieShowController extends Controller
         return view('welcome', compact('movie','newrelease','cinemas'));
     }
 
-    // TO view the detail of the movie
+
 
 
 

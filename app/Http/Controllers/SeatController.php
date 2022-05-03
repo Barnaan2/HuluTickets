@@ -8,9 +8,22 @@ use Illuminate\Http\Request;
 
 class SeatController extends Controller
 {
-    //
-
+    // find seat no and return it to view
     public function NewOne($id){
+        $numberOfSeats =\App\Models\Movieshow::find($id)->getCinema->Number_Of_Seats;
+        $MS_id = $id;
+
+        $arrayOfSeats = SystemController::AssignSeat($numberOfSeats,$MS_id);
+        $allSeats=SystemController::allseats($numberOfSeats);
+        $huluSeats = SystemController::show($id);
+        return view('Chooseseat',[
+            'MS_id' => $MS_id,
+            'allSeats'=> $allSeats,
+            'arrayOfSeats'=> $arrayOfSeats]);
+    }
+
+    //cinema admin view for seats
+    public function cinemaAdminView($id){
         $numberOfSeats =\App\Models\Movieshow::find($id)->getCinema->Number_Of_Seats;
         $MS_id = $id;
         $arrayOfSeats = SystemController::AssignSeat($numberOfSeats,$MS_id);
@@ -20,6 +33,7 @@ class SeatController extends Controller
             'allSeats'=> $allSeats,
             'arrayOfSeats'=> $arrayOfSeats]);
     }
+
 
 
 //seat assign
@@ -32,7 +46,8 @@ class SeatController extends Controller
                 'Email_Address' => request('Email_Address')
             ]);
         $customer->save();
-        {foreach($choosed as $seat)
+        {
+            foreach($choosed as $seat)
             $seat_in = Movieshow_seat::create([
                 'Movieshow_id' => $MS_id,
                 'Seat_id'     => $seat
@@ -40,12 +55,14 @@ class SeatController extends Controller
             ]);
             $seat_in->save();
         }
+        //for telling the customer the seat he chosen and helping in payment
         $Customer_id = Mycustomer::latest('created_at')->first()->id;
         $me = Movieshow_seat::latest('created_at')->paginate($no_of_seat);
         $Movieshow_seat_id= array();
         foreach($me as $m){
             array_push($Movieshow_seat_id, $m->id);
         }
+      SystemController::Customer_seat($Customer_id,$Movieshow_seat_id);
 //https://github.com/Barnaan2/HuluTickets.git
         return view('paymentMethod');
     }

@@ -12,7 +12,7 @@
                                     <div class="col mr-2">
                                         <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
                                             <span>Total Movie Shows</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>40,000</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span>{{$Total}}</span></div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                                 </div>
@@ -26,7 +26,7 @@
                                     <div class="col mr-2">
                                         <div class="text-uppercase text-success font-weight-bold text-xs mb-1">
                                             <span>Active Movie Shows</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>$215,000</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span>{{$Active}}</span></div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                     </div>

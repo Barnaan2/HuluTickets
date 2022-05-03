@@ -41,11 +41,11 @@
                     {{--        <p>the seat is not has been served </p>--}}
 
                     <input type="checkbox" id="r{{$seat}}" name="ChoosedSeats[]"  value="{{$seat}}"/>
-                    <label class="checkbox-alias" for="r{{$seat}}">{{$seat}}</label>
+                    <label class="checkbox-alias" for="r{{$seat}}"><p>{{$seat}}</p></label>
 
                 @else
                     <input type="checkbox"  id="r{{$seat}}" name="ChoosedSeats[]"  value="{{$seat}}"></input>
-                    <label class="checkbox-alias1" for="r{{$seat}}">{{$seat}}</label>
+                    <label class="checkbox-alias1" for="r{{$seat}}"><p>{{$seat}}</p></label>
                 @endif
             @endforeach
         </div>
@@ -70,15 +70,11 @@
                                 <span class="focus-input100"></span>
                             </div>
                         <div class ="form-group">
-                            <label class="form-check-label" for="exampleCheck1">Email Address</label>
-                            <input type="email" name="Email_Address" required>
+                            <label class="form-check-label" for="exampleCheck1">Phone Number</label>
+                            <input type="phone" name="Email_Address" required>
                             <span class="focus-input100"></span>
                         </div>
-                        <div class ="form-group">
-                            <label class="form-check-label" for="exampleCheck1">Email Address</label>
-                            <input type="email" name="Email_Address" required>
-                            <span class="focus-input100"></span>
-                        </div>
+
 
 
                     </div>

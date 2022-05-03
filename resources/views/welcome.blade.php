@@ -33,9 +33,9 @@
     <div class="container mt-lg-2">
         <div id="sub-navigation">
             <ul>
-                <li><a href="#">SHOW ALL</a></li>
-                <li><a href="#">LATEST TRAILERS</a></li>
-                <li><a href="#">TOP RATED</a></li>
+                <li><a href="#">LATEST MOVIES</a></li>
+                <li><a href="#">STREAMING TODAY</a></li>
+                <li><a href="#">TRENDING</a></li>
                 <li><a href="#">MOST COMMENTED</a></li>
             </ul>
 
@@ -61,18 +61,20 @@
                     <div class="movie">
 
 
-                        <a href="/Check/{{$new->id}}"><img src="./{{$new->Poster_Link}}" alt="" /></a>
+                        <a href="/Check/{{$new->id}}"><img src="./{{$new->Poster_Link}}" alt="" />
+                            <div class="moviedesc">
+                                <p>{{$new->Description}}</p>
+                            </div>
+                        </a>
 
 
-                        <div class="moviedesc">
-                            <p>{{$new->Description}}</p>
-                        </div>
+
                     </div>
                 @endforeach
             </div>
             {{-- movie by thier  something--}}
             <div class="head">
-                <h2>LATEST TRAILERS</h2>
+                <h2>STREAMING TODAY</h2>
 
 
             </div>
@@ -80,11 +82,13 @@
                 @foreach($newrelease as $new)
                     <div class="movie">
 
-                        <a href="/Check/{{$new->id}}"><img src="{{$new->Poster_Link}}" alt="" /></a>
+                        <a href="/Check/{{$new->id}}"><img src="{{$new->Poster_Link}}" alt="" />
+                            <div class="moviedesc">
+                                <p>{{$new->Description}}</p>
+                            </div>
+                        </a>
 
-                        <div class="moviedesc">
-                            <p>{{$new->Description}}</p>
-                        </div>
+
                     </div>
                 @endforeach
 
@@ -100,11 +104,13 @@
                 @foreach($newrelease as $new)
                     <div class="movie">
 
-                        <a href="/Check/{{$new->id}}"><img src="./{{$new->Poster_Link}}" alt="" /></a>
+                        <a href="/Check/{{$new->id}}"><img src="./{{$new->Poster_Link}}" alt="" />
+                            <div class="moviedesc">
+                                <p>{{$new->Description}}</p>
+                            </div>
+                        </a>
 
-                        <div class="moviedesc">
-                            <p>{{$new->Description}}</p>
-                        </div>
+
                     </div>
                 @endforeach
             </div>
@@ -119,11 +125,13 @@
                 @foreach($newrelease as $new)
                     <div class="movie">
 
-                        <a href="/Check/{{$new->id}}"><img src="./{{$new->Poster_Link}}" alt="" /></a>
+                        <a href="/Check/{{$new->id}}"><img src="./{{$new->Poster_Link}}" alt="" />
+                            <div class="moviedesc">
+                                <p>{{$new->Description}}</p>
+                            </div>
+                        </a>
 
-                        <div class="moviedesc">
-                            <p>{{$new->Description}}</p>
-                        </div>
+
                     </div>
                 @endforeach
             </div>

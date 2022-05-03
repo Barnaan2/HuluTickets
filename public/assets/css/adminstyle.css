@@ -1,0 +1,83 @@
+.seat-info{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+
+}
+.seat-info.div{
+    align-items: center;
+}
+.seat{
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+
+}
+.Sold-by-hulu{
+    background-color: #e06363;
+
+}
+.sold-by-cinema{
+    background-color: gray;
+}
+.Free{
+    background-color:#0093fe;
+}
+.Selectedseat{
+    background-color: #35d935;
+}
+.checkbox-alias{
+    background-color: #0093fe;
+    display: inline-block;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    position: relative;
+    transition: all 250ms  ease-out;
+    cursor: pointer;
+    text-align: center;
+    text-justify: center;
+}
+.checkbox-alias1{
+    background-color: #e06363;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    position: relative;
+    transition: all 250ms  ease-out;
+    cursor: not-allowed;
+    text-align: center;
+    align-content: center;
+}
+.checkbox-alias2{
+    background-color: gray;
+    display: inline-block;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    position: relative;
+    transition: all 250ms  ease-out;
+    cursor: not-allowed;
+    text-align: center;
+    align-content: center;
+}
+.seat-check{
+    color: black;
+
+}
+.seat-check input[type=checkbox]{
+    display: none;
+
+}
+.seat-check input[type=checkbox]:checked + .checkbox-alias{
+    background-color: #35d935;
+
+}
+progress{
+    height: 30px;
+
+}
+

@@ -37,7 +37,7 @@
 
 
          <div class="selected-actors">
-             <p class="align-left">Actors</p>
+             <p class="align-left" >Actors</p>
              @foreach($actors as $actor)
                  <div class="actor">
                      <img src="/{{$actor->Picture_Link}}" alt="">

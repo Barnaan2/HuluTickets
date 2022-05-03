@@ -106,7 +106,7 @@ textarea {
 }
 
 h2 {
-    font-size: 10px;
+    font-size: 15px;
     color: #f2a223;
     font-weight: bold;
 }
@@ -228,7 +228,7 @@ h3 {
 
 
 .moviedesc {
-    background-color: white;
+    background-color: ghostwhite;
     padding: 2px;
     position: absolute;
     left: 0;
@@ -236,11 +236,14 @@ h3 {
     right: 0;
     max-height: 100%;
     transform: translateY(101%);
-    transition: transform 0.5s ease-in;
+    transition: transform 1.0s ease-in-out;
     overflow-wrap: break-word;
-    color: black;
+    color: gray;
 
 
+}
+.moviedesc p{
+    padding: 2px 5px 2px 5px;
 }
 
 .movie:hover .moviedesc{
@@ -432,14 +435,15 @@ h3 {
 }
 
 .movie-shows {
-    display: flex;
-    justify-content: space-around;
+
     gap: 10px;
-    flex-wrap: wrap;
+
 }
 
 .movie-show {
     border-radius: 5px;
+    display: inline-block;
+    margin: 10px 10px 10px 10px;
     width: 230px;
     height: 130px;
     padding: 10px 10px 10px 10px;
@@ -449,11 +453,19 @@ h3 {
     -o-border-radius: 5px;
 }
 
+.movie-show:hover{
+    width: 240px;
+    height: 140px;
+    padding: 15px 15px 15px 15px;
+
+}
+
 .seat-info{
     display: flex;
 
     gap: 20px;
 }
+
 .seat{
     width: 50px;
     height: 40px;
@@ -479,8 +491,9 @@ h3 {
     position: relative;
     transition: all 250ms  ease-out;
     cursor: pointer;
+
     text-align: center;
-    text-justify: center;
+
 }
 .checkbox-alias1{
     background-color: red;
@@ -490,13 +503,17 @@ h3 {
     border-radius: 5px;
     position: relative;
     transition: all 250ms  ease-out;
-   cursor: not-allowed;
+  cursor: not-allowed;
     text-align: center;
     align-content: center;
 }
 .seat-check{
     color: black;
     width: 750px;
+}
+.seat-check p{
+
+    font-size: 15px;
 }
 .seat-check input[type=checkbox]{
     display: none;
@@ -510,11 +527,11 @@ h3 {
     height: 500px;
 }
 .payment-modal{
-    position: absolute;
-    width: 800px;
+    position: fixed;
+    width: 1000px;
     height: 800px;
    top:30px;
-    left: 20px;
+    left: 30px;
     padding: 20px 20px 20px 20px;
 
 }
@@ -524,4 +541,20 @@ h3 {
 
 .exit{
     cursor: pointer;
+}
+.movie-shows h2{
+text-decoration: none;
+    font-size: 16px;
+    text-underline: none;
+    color:black;
+}
+.movie-shows h3{
+
+    font-size: 16px;
+
+}
+
+.movie-shows a{
+    text-decoration: none;
+
 }

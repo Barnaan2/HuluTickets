@@ -25,29 +25,11 @@ class AdminController
         $movies = Movie::all();
  return view('Admin',compact('cinemas'));
     }
-   public function Index1($id){
-       $user = \App\Models\User::find($id);
-       $Cinemas =$user->getCinema;
-       foreach($Cinemas as $cinema)
-
-       {
-           $Cinema = $cinema;
-
-       }
-      $movieShows = $Cinema->getMovieshow;
-
-
-       return view('dashboard.CinemaAdmin.index',compact('Cinema','movieShows'));
-    }
 
     public function register(){
         return view('dashboard.SuperAdmin.superAdmin');
     }
-    public function addMovieShow(){
-        $movies = Movie::latest();
-        return view('dashboard.CinemaAdmin.addMovieShow',compact('$movies'));
 
-    }
 }
 
 
