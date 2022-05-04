@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                <p>THIS IS THE DEFAULT LOGIN IF YOUR ARE HERE THIS MEANS YOUR ROUTE HAS A PROBLEM</p>
 
                     {{ __('You are logged in!') }}
                 </div>

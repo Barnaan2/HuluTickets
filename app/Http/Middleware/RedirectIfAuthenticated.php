@@ -30,11 +30,12 @@ class RedirectIfAuthenticated
                 return redirect()->route('RegisterMe');
             }
             elseif (Auth::guard($guard)->check() && Auth()->user()->role==2){
-                return redirect()->route('Admin');
+                return redirect()->route('Home');
             }
+
             elseif (Auth::guard($guard)->check() && Auth()->user()->role==3){
-                $id = Auth()->user()->id;
-                return redirect()->route('Admin',$id);
+
+                return redirect()->route('Admin');
             }
         }
 

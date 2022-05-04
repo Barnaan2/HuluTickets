@@ -32,11 +32,11 @@ class ConfirmPasswordController extends Controller
             return redirect('dashboard');
         }
         elseif (Auth()->user()->role==2){
-            return redirect('Admin');
+            return redirect('Home');
         }
         elseif (Auth()->user()->role==3){
-            $id =Auth()->user()->id;
-            return redirect('Admin',$id);
+
+            return redirect('Admin');
         }
     }
     /**

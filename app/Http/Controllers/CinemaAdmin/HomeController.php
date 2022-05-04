@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     // index page
-    public function index($id)
+    public function index()
     {
-        $user = \App\Models\User::find($id);
+
+        $user = \App\Models\User::find(Auth::user()->id);
         $Cinemas = $user->getCinema;
 $profile = ProfilePictures::firstWhere('User_id',Auth::user()->id)->Picture_Link;
         foreach ($Cinemas as $cinema) {

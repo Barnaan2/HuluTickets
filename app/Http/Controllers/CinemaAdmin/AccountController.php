@@ -4,7 +4,6 @@ namespace App\Http\Controllers\CinemaAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
-use App\Models\ProfilePicture;
 use App\Models\ProfilePictures;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
