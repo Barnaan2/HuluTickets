@@ -227,87 +227,14 @@ h3 {
 }
 
 
-.moviedesc {
-    background-color: ghostwhite;
-    padding: 2px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    max-height: 100%;
-    transform: translateY(101%);
-    transition: transform 1.0s ease-in-out;
-    overflow-wrap: break-word;
-    color: gray;
 
 
-}
-.moviedesc p{
-    padding: 2px 5px 2px 5px;
-}
 
-.movie:hover .moviedesc{
-    transform: translateY(0);
-
-}
-
-.play {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 152px;
-    height: 214px;
-    background: url('images/image-hover.png');
-    display: block;
-    z-index: 5;
-    cursor: pointer;
-    display: none;
-}
-
-.movie span.name {
-    font-weight: bold;
-    color: #fff;
-    font-size: 14px;
-    text-align: center;
-    padding-top: 160px;
-    display: block;
-}
 
 .box .last {
     padding: 0;
 }
 
-.rating {
-    float: left;
-    width: 152px;
-    padding-top: 8px;
-}
-
-.rating p {
-    float: left;
-    font-size: 10px;
-    color: #fff;
-    font-weight: bold;
-}
-
-.rating .stars {
-    float: left;
-    width: 60px;
-    height: 11px;
-    background: url('images/stars.gif') no-repeat 0 0;
-    margin-left: 2px;
-}
-
-.rating .stars-in {
-    width: 48px;
-    display: inline;
-    background: url('images/stars.gif') no-repeat 0 bottom;
-    position: absolute;
-    height: 11px;
-    font-size: 0;
-    line-height: 0;
-    text-indent: -4000px;
-}
 
 #cinema {
     background: transparent;
@@ -473,7 +400,7 @@ h3 {
 
 }
 .Reserved{
-    background-color: red;
+    background-color: #e06363;
 
 }
 .Selectedseat{
@@ -496,7 +423,7 @@ h3 {
 
 }
 .checkbox-alias1{
-    background-color: red;
+    background-color: #e06363;
     display: inline-block;
     width: 50px;
     height: 50px;
@@ -520,7 +447,7 @@ h3 {
 
 }
 .seat-check input[type=checkbox]:checked + .checkbox-alias{
-    background-color: green;
+    background-color:  #35d935;
 
 }
 .payments{

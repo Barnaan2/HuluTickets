@@ -1,31 +1,16 @@
+@extends('dashboard.Admin.layouts.admindashboard')
+@section('Content')
 
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">Edit Crew</h3>
 
+            </div>
+            <div class="row">
+                <div class="col-sm-3 ">
 
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>edit-crew </title>
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-</head>
-<body>
-
-<div class="container-scroller">
-    <!-- partial:../../partials/_sidebar.html -->
-    <nav class=" navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="/home" class="nav-link">Home</a>
-            </li>
-        </ul>
-
-
-    </nav>
-
-    <div>
- <img src="/{{$crew->Picture_Link}}" alt="">
+ <img src="/{{$crew->Picture_Link}}" style="height: 200px; width:200px; border-radius: 50%" alt="">
  <p>{{$crew->First_Name}}  {{$crew->Last_Name}}</p>
   <p>{{$crew->About}}</p>
   <p>{{$crew->Role}}</p>
@@ -38,8 +23,16 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{route('UpdateCrew',$crew->id)}}" enctype="multipart/form-data">
-                        @csrf
+
+                    @if(\Illuminate\Support\Facades\Auth::user()->role == 1)
+
+                        <form method="POST" action="{{route('UpdateCrews',$crew->id)}}" enctype="multipart/form-data">
+                            @else
+
+                                <form method="POST" action="{{route('UpdateCrew',$crew->id)}}" enctype="multipart/form-data">
+                                    @endif
+
+                    @csrf
                          @method('PATCH')
                         <div class="row mb-3">
                             <label for="First_Name" class="col-md-4 col-form-label text-md-end">First Name</label>
@@ -129,5 +122,4 @@
         </div>
     </div>
 
-</body>
-</html>
+@endsection

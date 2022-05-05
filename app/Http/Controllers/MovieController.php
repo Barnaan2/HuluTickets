@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
@@ -56,8 +57,12 @@ public function addMovieTo()
         $relations->save();
 
     }
+    if(Auth::user()->role==1) {
+        return redirect()->route('ShowManageMovies')->with('alert', 'You have added new Movies');
 
-    return redirect('/');
+
+    }
+    return redirect()->route('ShowManageMovie')->with('alert','You have added a new Movie');
 }
 
     public function movieDetail($id)

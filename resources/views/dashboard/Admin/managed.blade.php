@@ -1,6 +1,10 @@
 @extends('dashboard.Admin.layouts.admindashboard')
 @section('Content')
       <!-- partial -->
+      @if(session('alert'))
+          <div class="alert alert-success">
+              {{session('alert')}}
+              @endif
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../../partials/_navbar.html -->
 
@@ -16,33 +20,35 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Admin</h4>
-                    <p class="card-description">Add  Admin Here</p>
-
-                    <form method="POST" action="{{route('AddAdmin')}}">
-                        @csrf
-                      <div class="form-group row">
-                        <label for="name" class="col-sm-3 col-form-label">Full Name</label>
-                        <div class="col-sm-9">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Full name" autocomplete="name" autofocus>
-
-                            <span class="invalid-feedback dan" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                        </div>
-                      </div>
 
                       <!-- Here is a selection form for cinema -->
 
-                        <form method="POST" action="{{ route('AddAdmin') }}">
+                        <form method="POST" action="{{ route('AddAdmins') }}">
                             @csrf
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ __('Name') }}</label>
+                            <div class="col-sm-9">
+                                <input type="text"   name='name' required>
+                            </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3" for="email">{{ __('Email Address') }}</label>
+                                <div class="col-sm-9">
+                                    <input type="email" name="email" required >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label  class="col-sm-3" for="password"> Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="password" required>
+                                </div>
+                            </div>
 
-                            <label>{{ __('Name') }}</label>
-                            <input type="text"   name='name' required>
-                            <label for="email">{{ __('Email Address') }}</label>
 
-                            <input type="email" name="email" required >
-                            <input type="password" name="password" required>
+
+
+
+
                             <button type="submit">
                                 {{ __('Register') }}
                             </button>

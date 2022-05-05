@@ -23,7 +23,7 @@
                         navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item " role="presentation"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="select.html">Today
                             Streaming</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Cinema</a></li>
@@ -31,7 +31,7 @@
                 </ul>
                 <form class="form-inline mr-auto" target="_self">
                     <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" placeholder="search" type="search" id="search-field" name="search"></div>
-                </form><span class="navbar-text"></span><a class="btn btn-light action-button" role="button" href="/login">Login</a>
+                </form> <span class=" ml-1 navbar-text"></span><a class="btn btn-light action-button " role="button" href="{{route('StoreInterested')}}">Work with us</a>
             </div>
         </div>
     </nav>

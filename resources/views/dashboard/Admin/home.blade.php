@@ -1,7 +1,10 @@
 @extends('dashboard.Admin.layouts.admindashboard')
 @section('Content')
       <!-- partial -->
-
+      @if(session('alert'))
+          <div class="alert alert-success">
+          {{session('alert')}}
+              @endif
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -18,7 +21,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">$12.34</h3>
+                          <h3 class="mb-0">{{$ActiveMovieShow}}</h3>
                           <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p>
                         </div>
                       </div>
@@ -38,7 +41,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">$17.34</h3>
+                          <h3 class="mb-0">{{count($cinemas)}}</h3>
                           <p class="text-success ms-2 mb-0 font-weight-medium">+11%</p>
                         </div>
                       </div>
@@ -58,7 +61,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">$12.34</h3>
+                          <h3 class="mb-0">12</h3>
                           <p class="text-danger ms-2 mb-0 font-weight-medium">-2.4%</p>
                         </div>
                       </div>
@@ -78,7 +81,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">$31.53</h3>
+                          <h3 class="mb-0">31</h3>
                           <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p>
                         </div>
                       </div>
@@ -105,7 +108,7 @@
                         <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
                       </div>
                       <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                        <h6 class="font-weight-bold mb-0">$236</h6>
+                        <h6 class="font-weight-bold mb-0">236 birr</h6>
                       </div>
                     </div>
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
@@ -114,7 +117,7 @@
                         <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
                       </div>
                       <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                        <h6 class="font-weight-bold mb-0">$593</h6>
+                        <h6 class="font-weight-bold mb-0">593 birr</h6>
                       </div>
                     </div>
                   </div>
@@ -172,7 +175,7 @@
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">$32123</h2>
+                          <h2 class="mb-0">32123 birr</h2>
                           <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p>
                         </div>
                         <h6 class="text-muted font-weight-normal">11.38% Since last month</h6>
@@ -191,7 +194,7 @@
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">$45850</h2>
+                          <h2 class="mb-0">45850 birr</h2>
                           <p class="text-success ms-2 mb-0 font-weight-medium">+8.3%</p>
                         </div>
                         <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6>
@@ -210,7 +213,7 @@
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">$2039</h2>
+                          <h2 class="mb-0">2039 birr</h2>
                           <p class="text-danger ms-2 mb-0 font-weight-medium">-2.1% </p>
                         </div>
                         <h6 class="text-muted font-weight-normal">2.27% Since last month</h6>

@@ -28,8 +28,8 @@
             <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="{{route('Home')}}">Hulu</a>
-          <a class="sidebar-brand brand-logo-mini" href="{{route('Home')}}"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo" href="{{route('RegisterMe')}}"><img class="  " src="/assets/img/logowhite1.png " alt="logo"></a>
+          <a class="sidebar-brand brand-logo-mini" href="{{route('RegisterMe')}}"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <ul class="nav">
           <li class="nav-item profile">
@@ -38,7 +38,7 @@
 
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="/assets/images/faces/face15.jpg" alt="">
+                  <img class="img-xs rounded-circle " src="/assets/img/logowhite1.png " alt="logo">
                   <span class="count bg-success"></span>
                 </div>
                   <div class="profile-name">
@@ -86,7 +86,7 @@
               </div>
             </div>
           </li>
-
+            @if(Auth::user()->role == 1 )
           <li class="nav-item menu-items">
             <a class="nav-link" href="{{route('ShowManageMovies')}}">
               <span class="menu-icon">
@@ -96,7 +96,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{route('ShowManageCinema')}}">
+            <a class="nav-link" href="{{route('ShowManageCinemas')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>
@@ -105,7 +105,7 @@
           </li>
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{route('ShowMovieShowStatus')}}">
+            <a class="nav-link" href="{{route('ShowMovieShowStatus-SuperAdmin')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
@@ -114,22 +114,57 @@
           </li>
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{route('ShowCinemaRequest')}}">
+            <a class="nav-link" href="{{route('ShowCinemaRequests')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
               <span class="menu-title">See Cinema requests</span>
             </a>
-              @if(Auth::user()->role == 1 )
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{route('ShowManageAdmin')}}">
+            <a class="nav-link" href="{{route('ShowManageAdmins')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
               <span class="menu-title">Manage Admins</span>
             </a>
           </li>
+            @else
+                <li class="nav-item menu-items">
+                    <a class="nav-link" href="{{route('ShowManageMovie')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                        <span class="menu-title">Manage Movie</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" href="{{route('ShowManageCinema')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                        <span class="menu-title">Manage Cinema</span>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-items">
+                    <a class="nav-link" href="{{route('ShowMovieShowStatus')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+                        <span class="menu-title">See Movie show status</span>
+                    </a>
+                </li>
+
+                <li class="nav-item menu-items">
+                    <a class="nav-link" href="{{route('ShowCinemaRequest')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+                        <span class="menu-title">See Cinema requests</span>
+                    </a>
+                </li>
+
             @endif
           <li class="nav-item menu-items">
             <a class="nav-link" href="{{ route('logout') }}"
@@ -152,8 +187,7 @@
       @yield('Content')
       <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2021</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Hulu Tickets 2022</span>
             </div>
           </footer>
           <!-- partial -->

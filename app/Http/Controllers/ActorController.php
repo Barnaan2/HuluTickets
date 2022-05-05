@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ActorController extends Controller
 {
@@ -22,7 +23,10 @@ class ActorController extends Controller
              'Picture_Link'=>$Picture_link
          ]);
          $newActor->save();
-    return redirect('/');
+         if(Auth::user()->role==1) {
+             return redirect()->route('RegisterMe')->with('alert', 'You have added new Actor');
 
+         }
+         return redirect()->route('Home')->with('alert','You have added a new Actor');
      }
 }

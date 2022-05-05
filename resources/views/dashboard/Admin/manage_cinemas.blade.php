@@ -12,17 +12,21 @@
 
             </div>
              <div class="row">
-              <div class="col-md-6 grid-margin stretch-card">
+              <div class="col-lg-11 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Cinema</h4>
                     <p class="card-description">Add the Cinema Here</p>
+                      @if(\Illuminate\Support\Facades\Auth::user()->role == 1)
+                          <form class="forms-sample" action="{{route('AddAdmins')}}" method="post" enctype="multipart/form-data">
+                         @else
                     <form class="forms-sample" action="{{route('AddAdmin')}}" method="post" enctype="multipart/form-data">
+                             @endif
                                    @csrf
                                     <div class="form-group row">
                                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Cinema name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputUsername2" placeholder="cname" required name="Name">
+                                            <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Cinema name" required name="Name">
                                         </div>
                                     </div>
                       <!-- Here is a selection form for cinema -->
@@ -37,17 +41,20 @@
                                     <div class="form-group row">
                                         <label for="exampleInputMobile" class="col-sm-3 col-form-label">Address</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputMobile" placeholder="addess" name="Address" required>
+                                            <input type="text" class="form-control" id="exampleInputMobile" placeholder="Address" name="Address" required>
                                             </div>
                                     </div>
 
                                     <div class="form-group row">
                                             <label for="exampleInputMobile" class="col-sm-3 col-form-label">Number of seats</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" id="exampleInputMobile"  required placeholder="seat exists in your cinema" name="Number_Of_Seat">
+                                                <input type="number" class="form-control" id="exampleInputMobile"  required placeholder="Number of seats" name="Number_Of_Seat">
                                             </div>
 
                                     </div>
+                        <div class="form group row ">
+                            <h6  class=" text-gray">Cinema Admin Info</h6>
+                        </div>
 {{--                                    <div class="form-group">--}}
 {{--                                    <label for="ProfilePicture">Cinema Profile Picture</label>--}}
 {{--                                    <div class="input-group">--}}
@@ -121,7 +128,7 @@
                         </div>
 
                       <button type="submit" class="btn btn-primary me-2">Submit</button>
-                      <button class="btn btn-dark">Cancel</button>
+
                     </form>
                   </div>
 
@@ -135,15 +142,11 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Cinema Admins</h4>
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="height:400px; overflow-y: scroll">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>
-                              <div class="form-check form-check-muted m-0">
 
-                              </div>
-                            </th>
                             <th> Name </th>
                             <th> Username</th>
                             <th> Email</th>
@@ -155,20 +158,17 @@
                         <tbody>
                         @foreach($userscinema as $user)
                           <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                              <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </td>
 
                             <td> {{$user->name}} </td>
                             <td> {{$user->username}} </td>
                             <td> {{$user->email}} </td>
                             <td> {{$user->role}} </td>
                             <td>
-                            <a href="{{'EditAdmin',$user->id}}">
+                                @if(\Illuminate\Support\Facades\Auth::user()->role ==1)
+                                    <a href="{{route('EditAdmins',$user->id)}}">
+                                @else
+                            <a href="{{route('EditAdmin',$user->id)}}">
+                                @endif
                             <div class="badge badge-outline-warning">
                              Edit
                                </div>
@@ -177,7 +177,11 @@
                             </td>
                             <td>
 {{--the re must be some method to delete the cinema admin--}}
-                            <a href="/delcin_adm/{{$user->id}}">
+                                @if(\Illuminate\Support\Facades\Auth::user()->role ==1)
+                                    <a href="{{route('DeleteUsers',$user->id)}}">
+                                        @else
+                                            <a href="{{route('DeleteUser',$user->id)}}">
+                                                @endif
                              <div class="badge badge-outline-danger">Delete</div>
                              </a>
 
@@ -197,15 +201,11 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Cinemas</h4>
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="height:400px; overflow-y: scroll">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>
-                              <div class="form-check form-check-muted m-0">
 
-                              </div>
-                            </th>
                             <th> Cinema Name </th>
                             <th> Address </th>
                             <th> Number of Seat </th>
@@ -217,27 +217,29 @@
                         <tbody>
                         @foreach($cinemas as $cinema)
                             <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </td>
+
 
                             <td> {{$cinema->Name}} </td>
                             <td> {{$cinema->Address}} </td>
                             <td> {{$cinema->Number_Of_Seats}} </td>
                             <td>  </td>
                             <td>
-                            <a href="{{route('EditCinema',$cinema->id)}}">
+                                @if(\Illuminate\Support\Facades\Auth::user()->role==1)
+                            <a href="{{route('EditCinemas',$cinema->id)}}">
+                                @else
+                                    <a href="{{route('EditCinema',$cinema->id)}}">
+                                        @endif
                             <div class="badge badge-outline-warning">
                              Edit
                                </div>
                               </a>
                               </td>
                               <td>
-                              <a href="{{route('DeleteCinema',$cinema->id)}}">
+                                  @if(\Illuminate\Support\Facades\Auth::user()->role ==1)
+                              <a href="{{route('DeleteCinemas',$cinema->id)}}">
+                                  @else
+                                      <a href="{{route('DeleteCinema',$cinema->id)}}">
+                                          @endif
                              <div class="badge badge-outline-danger">Delete</div>
                              </a>
                               </td>

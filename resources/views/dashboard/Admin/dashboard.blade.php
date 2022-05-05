@@ -76,8 +76,11 @@
                                 <form class="forms-sample " action="/" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">
-                                        <label for="mtitle" class="col-sm-3 form-label">Title</label>
-                                        <input type="text" class="form-control col-sm-8" id="exampleInputUsername1"  required placeholder="Username" name="Title">
+                                        <label for="mtitle" class="col-sm-3 col-form-label">Title</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control col-sm-8" id="mtitle" style="color:white" required placeholder="Movie Title" name="Title">
+                                        </div>
+
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputFile" class="col-sm-3 ">Poster</label>

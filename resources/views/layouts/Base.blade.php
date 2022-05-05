@@ -29,8 +29,9 @@
                 </ul>
                 <form class="form-inline mr-auto" target="_self">
                     <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" placeholder="search" type="search" id="search-field" name="search"></div>
-                </form><span class="navbar-text"></span><a class="btn btn-light action-button" role="button" href="/login">Login</a>
-                <span class="navbar-text"></span><a class="btn btn-light action-button" role="button" href="{{route('StoreInterested')}}">Work with us</a>
+                </form>
+                <span class="navbar-text"></span><a class="btn btn-light action-button" role="button" href="/login">Login</a>
+                <span class=" ml-1 navbar-text"></span><a class="btn btn-light action-button " role="button" href="{{route('StoreInterested')}}">Work with us</a>
             </div>
         </div>
     </nav>

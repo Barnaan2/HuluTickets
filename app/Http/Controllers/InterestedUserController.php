@@ -30,7 +30,7 @@ class InterestedUserController extends Controller
             'cinema_address'=> $interested ['cinema_address'],
 
         ]);
-        return "Thankyou we will meet you soon";
+        return redirect()->route('index')->with('alert','Thank you for your interest!,We Will contact you soon!');
 
     }
 }

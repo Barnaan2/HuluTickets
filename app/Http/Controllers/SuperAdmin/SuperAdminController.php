@@ -29,7 +29,7 @@ class SuperAdminController extends Controller
             'password' => Hash::make($request->password)
         ]);
         $Admin->save();
-        return redirect()->route('Home')->with('alert', 'You have added new Admin');
+        return redirect()->route('RegisterMe')->with('alert', 'You have added new Admin');
 
 
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CrewController extends Controller
 {
@@ -25,7 +26,13 @@ class CrewController extends Controller
             'Picture_Link'=>$Picture_link
         ]);
         $newActor->save();
-        return redirect('/');
+        if(Auth::user()->role==1) {
+            return redirect()->route('ShowManageMovies')->with('alert', 'You have added new Crew');
 
+
+        }
+        return redirect()->route('ShowManageMovie')->with('alert','You have added a new Crew');
     }
+
+
 }

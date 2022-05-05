@@ -3,10 +3,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Cinema;
 use App\Models\CinemaAdmin;
+use App\Models\InterestedUser;
+use App\Models\Message;
 use App\Models\Movie;
 use App\Models\Actor;
 use App\Models\City;
 use App\Models\Crew;
+use App\Models\MovieShow;
 use App\Models\User;
 use App\Models\MovieActor;
 use App\Models\interested_user;
@@ -20,8 +23,10 @@ class AdminController extends Controller
     // Home Function for Admin
     public function index()
     {
+        $ActiveMovieShow = count(MovieShow::all());
+
         $cinemas=Cinema::all();
-  return view('Dashboard.Admin.home', compact('cinemas'));
+  return view('Dashboard.Admin.home', compact('cinemas','ActiveMovieShow'));
     }
 
 
@@ -150,6 +155,9 @@ if (request('Poster_Link')){
 
        ['Poster_Link'=>$Poster_Link]
      ));
+if(Auth::user()->role == 1){
+    return redirect()->route('ShowManageMovies')->with('alert','you have updated movies successfully');
+}
 
      return redirect()->route('ShowManageMovie')->with('alert','you have updated movies successfully');
 
@@ -181,7 +189,11 @@ if (request('Picture_Link')){
       ['Picture_Link'=>$Picture_Link]
     ));
 
+    if(Auth::user()->role == 1) {
+        return redirect()->route('ShowManageMovies');
+    }
     return redirect()->route('ShowManageMovie');
+
   }
 
 
@@ -205,8 +217,10 @@ if (request('Picture_Link')){
       $edited,
       ['Picture_Link'=>$Picture_Link]
     ));
-
-    return redirect()->route('ShowManageMovie');
+      if(Auth::user()->role == 1) {
+          return redirect()->route('ShowManageMovies');
+      }
+      return redirect()->route('ShowManageMovie');
   }
 
 
@@ -229,7 +243,9 @@ if (request('ProfilePicture')){
       $edited,
       ['ProfilePicture'=>$ProfilePicture]
     ));
-
+    if(Auth::user()->role == 1) {
+        return redirect()->route('ShowManageCinemas');
+    }
     return redirect()->route('ShowManageCinema');
   }
 
@@ -244,10 +260,9 @@ if (request('ProfilePicture')){
        'username'=>'required',
        'email'=>'required',
     ]);
-
    $user->update($edited);
 
-    return redirect()->route('ShowManageAdmin');
+    return redirect()->route('ShowManageAdmins');
   }
 
 
@@ -278,13 +293,18 @@ return view('dashboard.Admin.movies.edit', compact('movie', 'crews', 'actors', '
 
    public function editCinemas(Cinema $cinema){
    $cities=City::all();
-   $citiess=$cinema->getCity();
+    $citiess=$cinema->getCity();
+       if(Auth::user()->role == 1) {
+      return view('dashboard.Admin.cinemas.edit', compact('cinema', 'cities', 'citiess'));
+//           return redirect()->route('EditCinemas', compact('cinema', 'cities'));
+       }
     return view('dashboard.Admin.cinemas.edit', compact('cinema', 'cities', 'citiess'));
+//       return redirect()->route('EditCinema', compact('cinema', 'cities'));
    }
 
    public function editAdmins(User $user){
 
-     return view('dashboard.Admin.admins.edit', compact('user'));
+     return view('dashboard.Admin.edit', compact('user'));
     }
 
 
@@ -309,17 +329,24 @@ public function showMovieshowstatus(){
   return view('dashboard.Admin.movieshowstatus');
 }
 public function showCinemaRequest(){
-  $interested_users=interested_user::all();
-  return view('dashboard.Admin.Cinemarequest', compact('interested_users'));
+        $messages = Message::all();
+  $interested_users=InterestedUser::all();
+
+  return view('dashboard.Admin.Cinemarequest', compact('interested_users','messages'));
 }
 public function showManagesAdmin(){
 $users=User::all();
+if(Auth::user()->role ==1){
+    return view('dashboard.SuperAdmin.managed', compact('users'));
+
+}
   return view('dashboard.Admin.managed', compact('users'));
 }
 
 
 //DELETE FUNCTIONS FOR ADMIN
 public function deleteActor($id,$id1){
+$name = Actor::find($id)->First_Name;
 
 $actor = MovieActor::firstwhere([
   'Actor_id'=>$id,
@@ -329,37 +356,50 @@ $actor = MovieActor::firstwhere([
 
   $actor->delete();
 
-
- return redirect()->route('ShowManageCinema');
+    if(Auth::user()->role == 1) {
+        return redirect()->route('EditMovies',$id1)->with('alert','You have deleted Actor  '.$name." from this movie");
+    }
+    return redirect()->route('EditMovie',$id1)->with('alert','You have deleted Actor '.$name." from this movie");;
 }
 
 public function deleteCrew($id, $id1){
+    $name = Crew::find($id)->First_Name;
   $crew = Movie_crew::firstwhere([
     'Crew_id'=>$id,
     'Movie_id'=>$id1,
   ]);
     $crew->delete();
-   return redirect()->route('ShowManageMovie');
+    if(Auth::user()->role == 1) {
+        return redirect()->route('EditMovies',$id1)->with('alert','You have deleted Crew '.$name." from this movie");
+    }
+    return redirect()->route('EditMovie',$id1)->with('alert','You have deleted  Crew '.$name." from this movie");
 }
 
 public function delActor($id){
 $actor=Actor::find($id);
 $actor->delete();
-return redirect()->route('ShowManageMovie');
+    if(Auth::user()->role == 1) {
+        return redirect()->route('ShowManageMovies');
+    }
+    return redirect()->route('ShowManageMovie');
 }
 
 public function delCrew($id){
   $crew=Crew::find($id);
   $crew->delete();
-  return redirect()->route('ShowManageMovie');
+    if(Auth::user()->role == 1) {
+        return redirect()->route('ShowManageMovies');
+    }
+    return redirect()->route('ShowManageMovie');
   }
 
   public function delMovie($id){
     $movie=Movie::find($id);
     $movie->delete();
-
-
-    return redirect()->route('ShowManageMovie');
+      if(Auth::user()->role == 1) {
+          return redirect()->route('ShowManageMovies');
+      }
+      return redirect()->route('ShowManageMovie');
     }
 
 
@@ -368,7 +408,11 @@ public function delCrew($id){
 public function delUser($id){
     $user=User::find($id);
     $user->delete();
-    return redirect()->route('ShowManageCinema');
+    if(Auth::user()->role == 1) {
+        return redirect()->route('ShowManageAdmins')->with('alert','You have deleted System admin Successfully');
+    }
+    return redirect()->back();
+
     }
 
 
@@ -378,8 +422,10 @@ public function delCinema($id){
     $cinema=Cinema::find($id);
 
       $cinema->delete();
-
-    return redirect()->route('ShowManageCinema')->with('alert','You have successfully deleted the selected cinema ');
+    if(Auth::user()->role == 1) {
+        return redirect()->route('ShowManageCinemas')->with('alert', 'You have successfully deleted the selected cinema ');
+    }
+    return redirect()->route('ShowManageCinema')->with('alert', 'You have successfully deleted the selected cinema ');
     }
 
 }

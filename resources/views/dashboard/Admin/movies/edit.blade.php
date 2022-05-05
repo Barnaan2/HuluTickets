@@ -1,42 +1,45 @@
 
+@extends('dashboard.Admin.layouts.admindashboard')
+@section('Content')
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">Edit Crew</h3>
+
+            </div>
 
 
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Edit-Movie </title>
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-</head>
-<body>
-
-<div class="container-scroller">
-    <!-- partial:../../partials/_sidebar.html -->
-    <nav class=" navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="/home" class="nav-link">Home</a>
-            </li>
-        </ul>
 
 
-    </nav>
+    @if(session('alert'))
+        <div class="alert alert-success">
+            {{session('alert')}}
+            @endif
+            <div class="row">
+                <div class="col-sm-5 ">
+    <img src="/{{$movie->Poster_Link}}"   style="height: 245px; width:160px; " alt="">
+    <p class=" text-light">{{$movie->Title}}</p>
 
-    <img src="/{{$movie->Poster_Link}}" alt="">
-    <p>{{$movie->Title}}</p>
-
-    <p>{{$movie->Description}}</p>
-    <p>{{$movie->Release_Date}}</p>
-    <p>{{$movie->Tailer_Link}}</p>
+    <p class=" text-light">{{$movie->Description}}</p>
+    <p class=" text-light">{{$movie->Release_Date}}</p>
+    <p class=" text-light">{{$movie->Tailer_Link}}</p>
+                </div>
     <p>@foreach($actorss as $actor)
-        {{$actor->First_Name}} {{$actor->Last_Name}} - <a href=" {{route('DeleteActorFromMovie',[$actor->id,$movie->id])}}">Delete</a> <br>
+            @if(\Illuminate\Support\Facades\Auth::user()->role ==1)
+        {{$actor->First_Name}} {{$actor->Last_Name}} - <a href=" {{route('DeleteActorFromMovies',[$actor->id,$movie->id])}}">Delete</a> <br>
+            @else
+                {{$actor->First_Name}} {{$actor->Last_Name}} - <a href=" {{route('DeleteActorFromMovie',[$actor->id,$movie->id])}}">Delete</a> <br>
+            @endif
     @endforeach
     </p>
 
     <p>@foreach($crewss as $crew)
-        {{$crew->First_Name}} {{$crew->Last_Name}} - {{$crew->Role}} - <a href=" {{route('DeleteCrewFromMovie',[$crew->id,$movie->id])}}">Delete</a> <br>
+            @if(\Illuminate\Support\Facades\Auth::user()->role ==1)
+        {{$crew->First_Name}} {{$crew->Last_Name}} - {{$crew->Role}} - <a href=" {{route('DeleteCrewFromMovies',[$crew->id,$movie->id])}}">Delete</a> <br>
+            @else
+                {{$crew->First_Name}} {{$crew->Last_Name}} - {{$crew->Role}} - <a href=" {{route('DeleteCrewFromMovie',[$crew->id,$movie->id])}}">Delete</a> <br>
+                @endif
     @endforeach
     </p>
 
@@ -50,7 +53,12 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{route('UpdateMovie',$movie->id)}}" enctype="multipart/form-data">
+                    @if(\Illuminate\Support\Facades\Auth::user()->role ==1)
+                    <form method="POST" action="{{route('UpdateMovies',$movie->id)}}" enctype="multipart/form-data">
+                        @else
+
+                            <form method="POST" action="{{route('UpdateMovie',$movie->id)}}" enctype="multipart/form-data">
+                            @endif
                         @csrf
                          @method('PATCH')
                         <div class="row mb-3">
@@ -162,10 +170,10 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
     </div>
 
-</body>
-</html>
+@endsection

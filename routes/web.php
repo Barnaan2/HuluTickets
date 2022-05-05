@@ -23,9 +23,6 @@ Route::post('/newCinema','CinemaController@addCinema')->name('addCinema');
 Route::get('/Check/{id}','MovieController@movieDetail')->name('detail');
 Route::post('/','MovieController@addMovieTo')->name('addMovieTo');
 Route::get('/Book/{id}','ScheduleController@moreDetail')->name('moreDetail');
-Route::get('/AddMovie','MovieController@addMovie')->name('addMovie');
-Route::post('/AddActor','ActorController@addActor')->name('addActor');
-Route::post('/addCrew','CrewController@addCrew')->name('addCrew');
 Route::post('/AddMovieShow','MovieShowController@addMovieShow')->name('addMovieshow');
 Route::post('/login/signUp','Auth\LoginController@login')->name('login.new');
 
@@ -64,46 +61,49 @@ Route::group(['middleware'=>'auth'],function(){
 
   Route::group(['prefix'=>'superAdmin','middleware'=>['isSuperAdmin','PreventBackHistory']], function(){
 
-         Route::get('/dashboard','AdminController@index')->name('dashboard');
+//         Route::get('/dashboard','AdminController@index')->name('dashboard');
 //      Route::get('/add/Adm','AdminController@register')->name('RegisterMe');
       //       Route::post('/register/Admin','Auth\RegisterController@createAdmin');
       Route::get('/','Admin\AdminController@index')->name('RegisterMe');
-      Route::get('manage_movies', 'Admin\AdminController@showManageMovie')->name('ShowManageMovies');
-      Route::get('/manage_cinemas', 'Admin\AdminController@showManageCinema')->name('ShowManageCinema');
-      Route::get('/movieshowstatus', 'Admin\AdminController@showMovieshowstatus')->name('ShowMovieShowStatus');
-      Route::get('/Cinemarequest', 'Admin\AdminController@showCinemaRequest')->name('ShowCinemaRequest');
-      Route::get('/managed', 'Admin\AdminController@showManagesAdmin')->name('ShowManageAdmin');
+      Route::get('/admin/manage_movies', 'Admin\AdminController@showManageMovie')->name('ShowManageMovies');
+      Route::get('/manage_cinemas', 'Admin\AdminController@showManageCinema')->name('ShowManageCinemas');
+      Route::get('/movieshowstatus', 'Admin\AdminController@showMovieshowstatus')->name('ShowMovieShowStatus-SuperAdmin');
+      Route::get('/Cinemarequest', 'Admin\AdminController@showCinemaRequest')->name('ShowCinemaRequests');
+      Route::get('/managed', 'Admin\AdminController@showManagesAdmin')->name('ShowManageAdmins');
+
 //            Route::get('admin/show', 'Admin\AdminController@show')->name('A');
 
-      Route::get('/delete/{id}/{id1}', 'Admin\AdminController@deleteActor')->name('DeleteActorFromMovie');
-      Route::get('/deletecrew/{id}/{id1}', 'Admin\AdminController@deleteCrew')->name('DeleteCrewFromMovie');
-      Route::get('/delactor/{id}', 'Admin\AdminController@delActor')->name('DeleteActor');
-      Route::get('/delcrew/{id}', 'Admin\AdminController@delCrew')->name('DeleteCrew');
-      Route::get('/delmovie/{id}', 'Admin\AdminController@delMovie')->name('DeleteMovie');
-      Route::get('/delcin_adm/{id}', 'Admin\AdminController@delUser')->name('DeleteUser');
-      Route::get('/delcinema/{id}', 'Admin\AdminController@delCinema')->name('DeleteCinema');
+      Route::get('/delete/{id}/{id1}', 'Admin\AdminController@deleteActor')->name('DeleteActorFromMovies');
+      Route::get('/deletecrew/{id}/{id1}', 'Admin\AdminController@deleteCrew')->name('DeleteCrewFromMovies');
+      Route::get('/delactor/{id}', 'Admin\AdminController@delActor')->name('DeleteActors');
+      Route::get('/delcrew/{id}', 'Admin\AdminController@delCrew')->name('DeleteCrews');
+      Route::get('/delmovie/{id}', 'Admin\AdminController@delMovie')->name('DeleteMovies');
+      Route::get('/delcin_adm/{id}', 'Admin\AdminController@delUser')->name('DeleteUsers');
+      Route::get('/delcinema/{id}', 'Admin\AdminController@delCinema')->name('DeleteCinemas');
 
       //EDIT ROUTES FOR ADMIN
-      Route::get('/manage_movies/{movie}/edit', 'Admin\AdminController@editMovies')->name('EditMovie');
-      Route::get('/actors/{actor}/edit', 'Admin\AdminController@editActors')->name('EditActor');
-      Route::get('/crews/{crew}/edit', 'Admin\AdminController@editCrews')->name('EditCrew');
-      Route::get('/cinemas/{cinema}/edit', 'Admin\AdminController@editCinemas')->name('EditCinema');
-      Route::get('/admins/{user}/edit', 'Admin\AdminController@editAdmins')->name('EditAdmin');
+      Route::get('/manage_movies/{movie}/edit', 'Admin\AdminController@editMovies')->name('EditMovies');
+      Route::get('/actors/{actor}/edit', 'Admin\AdminController@editActors')->name('EditActors');
+      Route::get('/crews/{crew}/edit', 'Admin\AdminController@editCrews')->name('EditCrews');
+      Route::get('/cinemas/{cinema}/edit', 'Admin\AdminController@editCinemas')->name('EditCinemas');
+      Route::get('/admins/{user}/edit', 'Admin\AdminController@editAdmins')->name('EditAdmins');
 
 
 
       //POST ROUTES FOR ADMIN
-      Route::post('/Create/Admin', 'SuperAdmin\SuperAdminController@createAdmin')->name('AddAdmin');
-
+      Route::post('/Create/Admin', 'SuperAdmin\SuperAdminController@createAdmin')->name('AddAdmins');
+      Route::post('/','MovieController@addMovieTo')->name('addMovies');
+      Route::post('/AddActor','ActorController@addActor')->name('addActors');
+      Route::post('/addCrew','CrewController@addCrew')->name('addCrews');
 
 
 
 //  PATCH/UPDATE ROUTES FOR ADMIN
-      Route::patch('/movies/{movie}', 'Admin\AdminController@updateMovies')->name('UpdateMovie');
-      Route::patch('/actors/{actor}', 'Admin\AdminController@updateActors')->name('UpdateActor');
-      Route::patch('/crews/{crew}', 'Admin\AdminController@updateCrews')->name('UpdateCrew');
-      Route::patch('/cinemas/{cinema}', 'Admin\AdminController@updateCinemas')->name('UpdateCinema');
-      Route::patch('/admins/{user}', 'Admin\AdminController@updateAdmins')->name('UpdateAdmin');
+      Route::patch('/movies/{movie}', 'Admin\AdminController@updateMovies')->name('UpdateMovies');
+      Route::patch('/actors/{actor}', 'Admin\AdminController@updateActors')->name('UpdateActors');
+      Route::patch('/crews/{crew}', 'Admin\AdminController@updateCrews')->name('UpdateCrews');
+      Route::patch('/cinemas/{cinema}', 'Admin\AdminController@updateCinemas')->name('UpdateCinemas');
+      Route::patch('/admins/{user}', 'Admin\AdminController@updateAdmins')->name('UpdateAdmins');
 
 
   });
@@ -148,7 +148,9 @@ Route::group(['middleware'=>'auth'],function(){
 
             //POST ROUTES FOR ADMIN
             Route::post('/admnistrators', 'Admin\AdminController@addAdmnistrators')->name('AddAdmin');
-
+            Route::post('/','MovieController@addMovieTo')->name('addMovie');
+            Route::post('/AddActor','ActorController@addActor')->name('addActor');
+            Route::post('/addCrew','CrewController@addCrew')->name('addCrew');
 
 
 
@@ -208,9 +210,9 @@ Route::group(['middleware'=>'auth'],function(){
 
 
 
-// useless routes
-//Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//// useless routes
+////Auth::routes();
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //
 //Route::group(['prefix'=>'Admin','middleware'=>['isAdmin','auth','PreventBackHistory']],function(){
 //    // you can add route as much as you want here:

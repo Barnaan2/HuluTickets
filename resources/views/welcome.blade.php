@@ -30,6 +30,9 @@
     </div>
 
     </div>
+    @if(session('alert'))
+        <div class="alert alert-success">{{session('alert')}}</div>
+        @endif
     <div class="container mt-lg-2">
         <div id="sub-navigation">
             <ul>

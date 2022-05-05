@@ -13,17 +13,11 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Movie shows</h4>
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="height:600px; overflow-y: scroll">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </th>
+
                             <th> Movie Title </th>
                             <th> Cinema</th>
                             <th> Tickets Sold</th>
@@ -35,13 +29,7 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </td>
+
 
                             <td> Kalesh alew </td>
                             <td> Alem </td>
