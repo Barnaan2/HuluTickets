@@ -10,6 +10,7 @@ use App\Models\Actor;
 use App\Models\City;
 use App\Models\Crew;
 use App\Models\MovieShow;
+use App\Models\ProfilePictures;
 use App\Models\User;
 use App\Models\MovieActor;
 use App\Models\interested_user;
@@ -76,6 +77,12 @@ class AdminController extends Controller
             'User_id' =>$User_id
         ]);
         $CinemaAdmin->save();
+        $Picture_Link = 'sdflsdf';
+        $change = ProfilePictures::create([
+            'User_id' => $User_id,
+            'Picture_Link'=> $Picture_Link
+        ]);
+        $change->save();
         return redirect()->route('Home')->with('alert','You have sucessfully added new cinema and its Admin');
     }
 

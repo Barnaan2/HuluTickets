@@ -10,13 +10,28 @@ use App\Models\MovieShow;
 use App\Models\Schedule;
 use App\Models\Movieshow_seat;
 use App\Models\CustomerSeat_in_Movieshow;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use phpDocumentor\Reflection\Element;
 
 class SystemController extends Controller
 {
 // public function seeder(){
-//     for ($i = 1; $i <= 50; $i++)
+//     $name = "Abel Kinfu";
+//     $email="abelkinfu@gmail.com";
+//     $role =1;
+//     $password = 12345678;
+//     $Admin = User::create([
+//         'name' => $name,
+//         'email' =>$email,
+//         'role' => $role,
+//         'password' => Hash::make($password)
+//     ]);
+//     $Admin->save();
+
+//
+//     for ($i = 1; $i <= 500; $i++)
 //   { $seats = Seat::create([
 //         'Seat_Number'=> $i
 //     ]);

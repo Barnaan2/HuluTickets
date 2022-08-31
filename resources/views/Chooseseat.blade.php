@@ -30,6 +30,7 @@
            </div>
 
 
+
     <form  class="pl-4 pb-3"action="/saveChoosed/{{$MS_id}}" method = "post" >
         @csrf
 
@@ -53,34 +54,51 @@
         <br>
 
         <div class="payment-modal hidden">
-            <div class="card">
-                <div class="card-body"><span onclick="exitmodal()" class="exit right  ">X</span>
-                    <h4 class="card-title">Hulu Tickets</h4>
-                    <p class="card-description">Movie name</p>
+            <div class="row">
+                <div class="col-md-11 card-shadow">
+                    <div class="card bg-dark">
+                        <div class=" ">
+                            <span onclick="exitmodal()" class="exit right  ">X</span>
+                            <h4 class="card-title center">Hulu Tickets</h4>
+                            <p class="card-description center">Movie name</p>
 
-                    <div class="form-group ">
-                            <div class ="form-group ">
-                                <label class="form-check-label" for="exampleCheck1">Name</label>
-                                <input type="text" required name="Name" required>
-                                <span class="focus-input100"></span>
-                            </div>
-                            <div class ="form-group ">
-                                <label class="form-check-label" for="exampleCheck1">Email Address</label>
-                                <input type="email" name="Email_Address" required>
-                                <span class="focus-input100"></span>
-                            </div>
-                        <div class ="form-group">
-                            <label class="form-check-label" for="exampleCheck1">Phone Number</label>
-                            <input type="phone" name="Email_Address" required>
-                            <span class="focus-input100"></span>
                         </div>
 
+                        <div class="card-body ">
+                            <div class="form-group ">
+                                <div class ="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="exampleCheck1">Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control " required name="Name" required>
+                                    </div>
 
 
+                                </div>
+                                <div class ="form-group row ">
+                                    <label class="col-form-label col-sm-3" for="exampleCheck1">Email Address</label>
+                                  <div class="col-sm-9">
+                                      <input type="email" class="form-control " name="Email_Address" required>
+                                      <span class="focus-input100"></span>
+                                  </div>
+
+
+                                </div>
+                                <div class ="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="exampleCheck1">Phone Number</label>
+                                   <div class="col-sm-9">
+
+                                       <input type="phone" class="form-control " name="Email_Address" required>
+                                       <span class="focus-input100"></span>
+                                   </div>
+                                </div>
+
+                            </div>
+                            <input type="submit" class="btn btn-outline-success center" name="pay">
+                        </div>
                     </div>
-         <input type="submit" name="pay">
                 </div>
             </div>
+
         </div>
     </form>
 

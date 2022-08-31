@@ -15,10 +15,11 @@ class CreateCustomerSeatInMovieshowsTable extends Migration
     {
         Schema::create('customer_seat_in__movieshows', function (Blueprint $table) {
             $table->id();
-            $table->integer('Mycustomer_id')->unsigned();
-            $table->integer('Movieshow_seat_id')->unsigned();
+            $table->integer('Mycustomer_id')->unsigned()->unique();
+            $table->integer('Movieshow_seat_id')->unsigned()->unique();
             $table->timestamps();
         });
+
     }
 
     /**

@@ -23,13 +23,13 @@
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
                 <li class="nav-item" role="presentation"><a class="nav-link active" href="{{route('Admin',Auth::user()->id)}}"><i
-                            class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                            class="fas fa-tachometer-alt fa-4x"></i><span>Dashboard</span></a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('AddMovieShow')}}"><i
-                            class="far fa-user-circle"></i><span>Add Movie Show</span></a></li>
+                            class="far fa-user-circle fa-4x"></i><span>Add Movie Show</span></a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('MovieShowStatus')}}"><i
-                            class="far fa-user-circle"></i><span>Movie Show Status</span></a></li>
+                            class="far fa-user-circle fa-4x"></i><span>Movie Show Status</span></a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('Account')}}"><i
-                            class="fas fa-user"></i><span>Account Setting</span></a></li>
+                            class="fas fa-user fa-4x"></i><span>Account Setting</span></a></li>
 
                 <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('logout') }}"
                                                             onclick="event.preventDefault();

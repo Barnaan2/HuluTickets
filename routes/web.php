@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 | Web Routes
 |--------------------------------------------------------------------------
 */
-//Route::get('/a/{id}','SystemController@finda')->name('index');
+Route::get('/a','SystemController@seeder')->name('ggg');
 Route::get('/','MovieShowController@index')->name('index');
 Route::get('/test/{id}','SeatController@NewOne');
 Route::get('/cinema/{id}','MovieShowController@CinemaMovie');

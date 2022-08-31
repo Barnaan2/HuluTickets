@@ -51,9 +51,9 @@ h4 {
     padding-right: 23px;
 }
 
-#sub-navigation ul li a {
-    font-size: 14px;
-    font-weight: bold;
+#sub-navigation  a {
+    font-size: 12px;
+
     color: #fff;
     line-height: 24px;
     text-decoration: none;
@@ -106,9 +106,9 @@ textarea {
 }
 
 h2 {
-    font-size: 15px;
+    font-size: 12px;
     color: #f2a223;
-    font-weight: bold;
+
 }
 
 h3 {
@@ -404,7 +404,7 @@ h3 {
 
 }
 .Selectedseat{
-    background-color: green;
+    background-color:  #35d935;
 }
 .Free{
     background-color: white;
@@ -454,14 +454,23 @@ h3 {
     height: 500px;
 }
 .payment-modal{
+
     position: fixed;
-    width: 1000px;
-    height: 800px;
-   top:30px;
-    left: 30px;
+    width:100vw;
+   top:25px;
+    left: 25%;
+
+
+}
+
+.payment-modal .card{
+
+    width:60%;
+    height: 80vh;
     padding: 20px 20px 20px 20px;
 
 }
+
 .hidden{
     display: none;
 }
